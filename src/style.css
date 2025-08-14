@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+html {
+  scroll-behavior: smooth; /* smooth scrolling */
+}
+h1.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  grid-column: 1 / -1; /* Span all 3 columns */
+  display: block; /* Essential for containing the ::after element to the header's width */
+  position: relative; /* Allows positioning of the ::after element relative to the header */
+}
+h1.section-title::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute;
+  left: 50%; /* Centers the underline */
+  bottom: -5px; /* Adjust this value to control the distance from the text */
+  width: 50%; /* Adjust this to control the line's length (e.g., 50% for half the width) */
+  height: 1px; /* Adjust this to control the line's thickness */
+  background: #9DA3A4; /* Set your desired color */
+  transform: translateX(-50%); /* Centers the underline horizontally */
+}
+hr {
+  width: 50%; /* Adjust this to control the line's length (e.g., 50% for half the width) */
+  margin: 0 auto; /* Centers the hr tag horizontally if its width is less than 100% */
+  margin-bottom: 24px;
+  border: none;
+  height: 1px;
+  background-color: #C5C6BF;
+}
+
+/* Color Scheme */
+div#app {
+  background: #9DA3A4;
+}
+h1, h2, li, p {
+  color: #C5C6BF;
+
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+header {
+  background: #182025;
+}
+.section-title {
+  color: #9FC2D0;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 2px black; /* horizontal, vertical, blur, color */
+}
+.hero {
+  background: #29353C;
+}
+.skills {
+  background: #182025;
+}
+.skill-column {
+  color: #C5C6BF;
+}
+.skill-item {
+  background-color: #29353C;
+}
+.projects {
+  background: #29353C;
+}
+.experiences {
+  background: #182025;
+}
+.education {
+  background: #29353C;
+}
+footer {
+  background: #182025;
+}
+
+
+
+/* Rounded Corner */
+.skill-column.top-left {
+	-webkit-border-top-left-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	border-top-left-radius: 12px;
+}
+.skill-column.top-right {
+	-webkit-border-top-right-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	border-top-right-radius: 12px;
+}
+.skill-column.bottom-left {
+	-webkit-border-bottom-left-radius: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-left-radius: 12px;
+}
+.skill-column.bottom-right {
+	-webkit-border-bottom-right-radius: 12px;
+	-moz-border-radius-bottomright: 12px;
+	border-bottom-right-radius: 12px;
+}
+.project-card {
+  border-radius: 12px;
+}
+.card-image {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.experiences-image img {
+  border-radius: 12px;
+}
+.experiences-accordion {
+  border-radius: 12px;
+}
+.experience-square {
+  border-radius: 12px;
+}
+.experience-icon img {
+  border-radius: 12px;
+}
+
+
+
+
+/*  Hero Typing Effect  */
+.typed-cursor {
+  /* Adjust blink speed */
+  /* animation: blink 1.2s infinite; */
+  animation: none !important;
+
+  /* Change cursor color */
+  color: #FFF;
+
+  /* Change cursor opacity for subtle blinking */
+  opacity: 1;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
