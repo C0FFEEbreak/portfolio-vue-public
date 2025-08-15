@@ -1,22 +1,10 @@
-
-
-<script setup>
-import { ref } from 'vue'
-import experiences from '@/data/experiences.js'
-
-const activeIndex = ref(null)
-
-function toggleAccordion(index) {
-  activeIndex.value = activeIndex.value === index ? null : index
-}
-</script>
-
 <template>
   <section class="experiences" id="experiences">
-    <!-- Top row -->
+    <!-- Title -->
     <h1 class="section-title">Experiences</h1>
+    <hr />
 
-    <!-- Bottom row -->
+    <!-- Content -->
     <div class="experiences-content">
       
       <!-- Column 1: Experience square -->
@@ -88,14 +76,22 @@ function toggleAccordion(index) {
   </section>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+import experiences from '@/data/experiences.js'
 
+const activeIndex = ref(null)
+
+function toggleAccordion(index) {
+  activeIndex.value = activeIndex.value === index ? null : index
+}
+</script>
 
 <style scoped>
 .experiences {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 1rem;
-  padding: 1rem;
 }
 
 .section-title {
@@ -107,36 +103,17 @@ function toggleAccordion(index) {
 .experiences-content {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
-/* Make columns split 50% each */
-.experience-square,
-.experiences-accordion {
-  flex: 1 1 50%;
-}
-
-/* Square with centered icon + text */
-.experiences-content {
-  display: flex;
-  gap: 2rem;
-  align-items: center; /* vertical centering of columns */
-}
-
-/* 50% width for each column */
-.experience-square,
-.experiences-accordion {
-  flex: 1 1 50%;
-}
-
-/* The square itself */
+/* Left column: experience square */
 .experience-square {
   background-color: #3A4B55;
   color: #fff;
-  width: clamp(200px, 80%, 300px);  /* responsive width */
-  height: clamp(150px, 60vw, 100px); /* responsive height */
-  margin: 0 auto; /* horizontal centering */
-  
-  display: flex;  /* centers inner content */
+  width: clamp(200px, 80%, 300px);
+  height: clamp(150px, 60vw, 150px);
+  margin: 0 auto;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -169,19 +146,12 @@ function toggleAccordion(index) {
   color: #c5c6bf;
 }
 
-
-
-/* Accordion */
+/* Right column: accordion */
 .experiences-accordion {
   background: #3A4B55;
   padding: 20px;
-  width: 100%;       /* Always full width of its column */
-  max-width: none;   /* Remove desktop max-width limit on mobile */
+  width: 100%;
   box-sizing: border-box;
-}
-
-span.accordion-arrow svg {
-  color: #C5C6BF;
 }
 
 .accordion-item {
@@ -192,7 +162,6 @@ span.accordion-arrow svg {
   width: 100%;
   background: none;
   border: none;
-  outline: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -211,26 +180,29 @@ span.accordion-arrow svg {
 
 .accordion-content {
   padding: 0 0 1rem 0;
-  color: #555;
+  color: #e3e3e3;
+}
+
+/* Layout behavior */
+.experience-square,
+.experiences-accordion {
+  flex: 1 1 50%;
 }
 
 /* Mobile layout */
 @media (max-width: 768px) {
   .experiences-content {
     flex-direction: column;
-    align-items: stretch; /* make children span full width */
+    align-items: stretch;
   }
   .experience-square {
     max-width: 90%;
-    max-height: 20%;
+    height: auto;
   }
   .experience-square,
   .experiences-accordion {
-    flex: none;    /* don't let flex try to shrink it */
-    width: 100%;   /* full screen width in mobile layout */
+    flex: none;
+    width: 100%;
   }
 }
-
-
 </style>
-

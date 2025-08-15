@@ -5,32 +5,42 @@ body {
 html {
   scroll-behavior: smooth; /* smooth scrolling */
 }
-h1.section-title {
+.section-title {
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   text-align: center;
-  grid-column: 1 / -1; /* Span all 3 columns */
-  display: block; /* Essential for containing the ::after element to the header's width */
-  position: relative; /* Allows positioning of the ::after element relative to the header */
+  color: #9FC2D0;
+  text-shadow: 2px 2px 2px black;
+  margin-bottom: 2rem;
+
+  /* Keep these for grid layouts like Skills */
+  grid-column: 1 / -1;
+  display: block;
+  position: relative; /* for underline pseudo-element */
 }
-h1.section-title::after {
-  content: ''; /* Required for pseudo-elements */
-  position: absolute;
-  left: 50%; /* Centers the underline */
-  bottom: -5px; /* Adjust this value to control the distance from the text */
-  width: 50%; /* Adjust this to control the line's length (e.g., 50% for half the width) */
-  height: 1px; /* Adjust this to control the line's thickness */
-  background: #9DA3A4; /* Set your desired color */
-  transform: translateX(-50%); /* Centers the underline horizontally */
-}
+
 hr {
   width: 50%; /* Adjust this to control the line's length (e.g., 50% for half the width) */
   margin: 0 auto; /* Centers the hr tag horizontally if its width is less than 100% */
   margin-bottom: 24px;
   border: none;
   height: 1px;
-  background-color: #C5C6BF;
+  background-color: #9DA3A4;
+}
+
+/* Section Padding */
+
+.hero, .skills, .projects, .experiences, .education {
+  padding: 4rem 4rem;
+  padding-bottom: 100px;
+}
+.section-content {
+  margin-top: 1.5rem;  /* space after hr */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;         /* consistent spacing between cards/items */
 }
 
 /* Color Scheme */

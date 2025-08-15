@@ -1,6 +1,7 @@
 <template>
   <section class="projects" id="projects">
     <h1 class="section-title">Projects</h1>
+    <hr />
     <div class="projects">
       <div class="projects-grid">
         <div
@@ -119,13 +120,7 @@ export default {
 </script>
 
 <style scoped>
-.projects {
-  padding: 40px 20px;
-}
 
-.projects {
-  padding: 2rem;
-}
 
 .projects-grid {
   display: grid;

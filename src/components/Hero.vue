@@ -33,7 +33,6 @@ onMounted(() => {
 <style scoped>
 .hero {
   text-align: center;
-  padding: 4rem 4rem;
   /* keep your original padding */
   background-color: #29353C; /* fallback color */
   background-image: url('@/assets/blurry-gradient-haikei.png');

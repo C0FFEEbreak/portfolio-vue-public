@@ -1,11 +1,11 @@
 <template>
-  <section class="education" id="education">
-    <!-- Top row -->
+  <section class="base-section education" id="education">
     <h1 class="section-title">Education</h1>
+    <hr />
 
-    <!-- Bottom row -->
-    <div class="education-grid">
-      <!-- Column 1: Education items -->
+
+    <div class="section-content">
+      <!-- Education Timeline -->
       <div class="education-timeline">
         <div
           v-for="(item, index) in education"
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <!-- Column 2: WordSphere -->
+      <!-- WordSphere -->
       <div class="education-sphere">
         <WordSphere :words="courses" />
       </div>
@@ -62,33 +62,42 @@ export default {
 </script>
 
 <style scoped>
-.education {
-  padding: 4rem 2rem;
+/* Shared base section layout */
+.base-section {
+  padding: 4rem 1rem;
+  text-align: center;
 }
 
 .section-title {
-  text-align: center;
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Grid layout */
-.education-grid {
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background-color: #76A8BC;
+  border: none;
+  margin: 0 auto 2.5rem auto;
+  border-radius: 2px;
+}
+
+.section-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: start;
 }
 
-/* Timeline items (no vertical line) */
+/* Education Timeline */
 .education-timeline {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  text-align: left;
 }
 
-/* Blue dot + content */
 .timeline-content {
   position: relative;
   padding-left: 2rem;
@@ -101,7 +110,6 @@ export default {
   top: 0.5rem;
   width: 12px;
   height: 12px;
-  /* background: #4cafef; */
   background: #76A8BC;
   border-radius: 50%;
 }
@@ -131,9 +139,9 @@ export default {
   align-items: center;
 }
 
-/* Responsive: stack columns on mobile */
+/* Responsive */
 @media (max-width: 768px) {
-  .education-grid {
+  .section-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
