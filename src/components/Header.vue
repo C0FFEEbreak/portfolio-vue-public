@@ -4,7 +4,7 @@
       <ul>
         <li v-for="(link, index) in navLinks" :key="link.name">
           <a :href="link.url">{{ link.name }}</a>
-          <!-- Separator: only add if not last item -->
+          <!-- Separator -->
           <span v-if="index < navLinks.length - 1" class="separator"></span>
         </li>
       </ul>
@@ -83,7 +83,7 @@ const navLinks = [
     background: rgba(255, 255, 255, 0.4);
   }
   50% {
-    background: rgba(255, 215, 122, 0.8); /* warm gold mid-pulse */
+    background: rgba(255, 215, 122, 0.8);
   }
 }
 
@@ -101,4 +101,16 @@ const navLinks = [
     display: none;
   }
 }
+@media (max-width: 420px) {
+  nav {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
 </style>

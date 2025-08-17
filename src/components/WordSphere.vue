@@ -46,9 +46,9 @@ export default {
     let direction = 1; // spin direction
 
     // Reverse direction every 6 seconds
-//    setInterval(() => {
-//      direction *= -1;
-//    }, 6000);
+    //    setInterval(() => {
+    //      direction *= -1;
+    //    }, 6000);
 
     // Easing factor controls how fast speed changes (0 < easing <=1)
     const easing = 0.05;
@@ -106,9 +106,5 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-canvas {
-  background: #76A8BC;
-  border-radius: 100%;
 }
 </style>

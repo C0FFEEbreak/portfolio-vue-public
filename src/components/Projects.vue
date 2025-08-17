@@ -1,33 +1,26 @@
 <template>
   <section class="projects" id="projects">
+    <!-- fade-in -->
+    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
     <h1 class="section-title">Projects</h1>
     <hr />
-    <div class="projects">
-      <div class="projects-grid">
-        <div
-          v-for="(project, index) in projects"
-          :key="index"
-          class="project-card"
-        >
-          <!-- Top Row: Clickable Image -->
-          <a :href="project.url" target="_blank" rel="noopener noreferrer">
-            <img :src="project.image" :alt="project.title" class="card-image" />
-          </a>
 
-          <!-- Second Row: Main Text -->
-          <div class="card-main-text">
-            {{ project.title }}
-          </div>
+    <div class="projects-grid">
+      <div v-for="(project, index) in projects" :key="index" class="project-card">
+        <a :href="project.url" target="_blank" rel="noopener noreferrer">
+          <img :src="project.image" :alt="project.title" class="card-image" />
+        </a>
 
-          <!-- Third Row: Two Columns -->
-          <div class="card-footer">
-            <div class="footer-text">{{ project.footerText }}</div>
-            <div class="footer-icon">
-              <img :src="project.icon" alt="icon" />
-            </div>
+        <div class="card-main-text">{{ project.title }}</div>
+
+        <div class="card-footer">
+          <div class="footer-text">{{ project.footerText }}</div>
+          <div class="footer-icon">
+            <img :src="project.icon" alt="icon" />
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 </template>
@@ -45,110 +38,64 @@ import img9 from "@/assets/09.jpg";
 import icon1 from "@/assets/icons/icon-codepen.png";
 
 export default {
-  name: "ProjectsSection",
+  name: "Projects",
   data() {
     return {
       projects: [
-        {
-          title: "Website",
-          image: img1,
-          url: "https://example.com",
-          footerText: "Paw Spa Grooming",
-          icon: icon1,
-        },
-        {
-          title: "Web Activity",
-          image: img2,
-          url: "https://example.com",
-          footerText: "Multiple Choice",
-          icon: icon1,
-        },
-        {
-          title: "Website",
-          image: img3,
-          url: "https://example.com",
-          footerText: "Yume Poke",
-          icon: icon1,
-        },
-        {
-          title: "Web Activity",
-          image: img4,
-          url: "https://example.com",
-          footerText: "Click to Reveal",
-          icon: icon1,
-        },
-        {
-          title: "Web Activity",
-          image: img5,
-          url: "https://example.com",
-          footerText: "Click to Reveal",
-          icon: icon1,
-        },
-        {
-          title: "JS Tool",
-          image: img6,
-          url: "https://example.com",
-          footerText: "Checklist",
-          icon: icon1,
-        },
-        {
-          title: "JS Tool",
-          image: img7,
-          url: "https://example.com",
-          footerText: "Calculator",
-          icon: icon1,
-        },
-        {
-          title: "Web Activity",
-          image: img9,
-          url: "https://example.com",
-          footerText: "Click to Reveal",
-          icon: icon1,
-        },
-        {
-          title: "JS Tool",
-          image: img8,
-          url: "https://example.com",
-          footerText: "Stopwatch",
-          icon: icon1,
-        },
-        //
-      ],
+        { title: "Website", image: img1, url: "https://codepen.io/coffeebreaks/pen/ZEPbXgJ", footerText: "Paw Spa Grooming", icon: icon1,
+          alt: "Screenshot of animal website", },
+        { title: "Web Activity", image: img2, url: "https://codepen.io/coffeebreaks/pen/RwvvpBM", footerText: "Multiple Choice", icon: icon1,
+          alt: "Screenshot of nature activity", },
+        { title: "Website", image: img3, url: "https://codepen.io/coffeebreaks/pen/wvOBKNx", footerText: "Yume Poke", icon: icon1,
+          alt: "Screenshot of restaurant website", },
+        { title: "Web Activity", image: img4, url: "https://codepen.io/coffeebreaks/pen/NWojJwP", footerText: "Click to Reveal", icon: icon1,
+          alt: "Screenshot of sports activity", },
+        { title: "Web Activity", image: img5, url: "https://codepen.io/coffeebreaks/pen/gOqdMMK", footerText: "Click to Reveal", icon: icon1,
+          alt: "Screenshot of travel activity", },
+        { title: "JS Tool", image: img6, url: "https://codepen.io/coffeebreaks/pen/QWYEjeR", footerText: "Checklist", icon: icon1,
+          alt: "Screenshot of checklist", },
+        { title: "JS Tool", image: img7, url: "https://codepen.io/coffeebreaks/pen/gOqMVmd", footerText: "Calculator", icon: icon1,
+          alt: "Screenshot of calculator", },
+        { title: "Web Activity", image: img9, url: "https://codepen.io/coffeebreaks/pen/bGZejrP", footerText: "Click to Reveal", icon: icon1,
+          alt: "Screenshot of sports activity", },
+        { title: "JS Tool", image: img8, url: "https://codepen.io/coffeebreaks/pen/oNmLZoq", footerText: "Stopwatch", icon: icon1,
+          alt: "Screenshot of JS stopwatch", }
+      ]
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
-
-
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-/* Card container with rounded corners & background */
 .project-card {
   display: flex;
   flex-direction: column;
   background: #C5C6BF;
-  overflow: hidden; /* so top corners are clean */
+  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Top row image with only top corners rounded */
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
 .card-image {
   width: 100%;
   height: auto;
   display: block;
   transition: transform 0.3s ease;
 }
-.project-card a:hover .card-image {
-  transform: scale(1.05);
-}
 
-/* Second row - main text */
+.project-card a:hover .card-image { transform: scale(1.05); }
+
 .card-main-text {
   padding: 1rem;
   font-weight: bold;
@@ -156,7 +103,6 @@ export default {
   border-bottom: 1px solid #C5C6BF;
 }
 
-/* Third row: two columns */
 .card-footer {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -164,26 +110,28 @@ export default {
   padding: 0.8rem 1rem;
 }
 
-.projects .footer-text {
-  font-size: 0.9rem;
-  color: #555;
-}
+.footer-text { font-size: 0.9rem; color: #555; }
+.footer-icon img { width: 20px; height: 20px; }
 
-.footer-icon img {
-  width: 20px;
-  height: 20px;
+/* Fade-in */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms ease, transform 420ms ease;
+  will-change: opacity, transform;
 }
-
-/* Responsive Breakpoints */
-@media (max-width: 900px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section,
+  .fade-in-section.is-visible {
+    transition: none;
+    transform: none;
   }
 }
 
-@media (max-width: 600px) {
-  .projects-grid {
-    grid-template-columns: 1fr; /* Mobile: 1 column */
-  }
-}
+@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
 </style>

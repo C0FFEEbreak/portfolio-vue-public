@@ -1,13 +1,12 @@
 <template>
   <section class="experiences" id="experiences">
-    <!-- Title -->
+    <!-- fade-in -->
+    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
     <h1 class="section-title">Experiences</h1>
     <hr />
 
-    <!-- Content -->
     <div class="experiences-content">
-      
-      <!-- Column 1: Experience square -->
+      <!-- Left Column -->
       <div class="experience-square">
         <div class="experience-inner">
           <div class="experience-icon">
@@ -20,13 +19,9 @@
         </div>
       </div>
 
-      <!-- Column 2: Accordion -->
+      <!-- Right Column -->
       <div class="experiences-accordion">
-        <div
-          v-for="(experience, index) in experiences"
-          :key="index"
-          class="accordion-item"
-        >
+        <div v-for="(experience, index) in experiences" :key="index" class="accordion-item">
           <button
             class="accordion-header"
             :aria-expanded="activeIndex === index ? 'true' : 'false'"
@@ -36,42 +31,21 @@
           >
             <span>{{ experience.category }}</span>
             <span class="accordion-arrow" aria-hidden="true">
-              <!-- Down arrow (active) -->
-              <svg
-                v-if="activeIndex === index"
-                xmlns="http://www.w3.org/2000/svg"
-                height="40px"
-                width="40px"
-                viewBox="0 -960 960 960"
-                fill="#e3e3e3"
-              >
+              <svg v-if="activeIndex === index" xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#e3e3e3" viewBox="0 -960 960 960">
                 <path d="M480-344 240-584l47.33-47.33L480-438.67l192.67-192.66L720-584 480-344Z" />
               </svg>
-              <!-- Left arrow (inactive) -->
-              <svg
-                v-else
-                xmlns="http://www.w3.org/2000/svg"
-                height="40px"
-                width="40px"
-                viewBox="0 -960 960 960"
-                fill="#e3e3e3"
-              >
+              <svg v-else xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#e3e3e3" viewBox="0 -960 960 960">
                 <path d="M560.67-240 320-480.67l240.67-240.66L608-674 414.67-480.67 608-287.33 560.67-240Z" />
               </svg>
             </span>
           </button>
 
-          <div
-            v-show="activeIndex === index"
-            class="accordion-content"
-            :id="'panel-' + index"
-            role="region"
-            :aria-labelledby="'accordion-header-' + index"
-          >
+          <div v-show="activeIndex === index" class="accordion-content" :id="'panel-' + index" role="region" :aria-labelledby="'accordion-header-' + index">
             <p>{{ experience.description }}</p>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 </template>
@@ -88,31 +62,17 @@ function toggleAccordion(index) {
 </script>
 
 <style scoped>
-.experiences {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 1rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
-}
-
 .experiences-content {
   display: flex;
   gap: 2rem;
   align-items: center;
 }
 
-/* Left column: experience square */
 .experience-square {
   background-color: #3A4B55;
   color: #fff;
-  width: clamp(200px, 80%, 300px);
-  height: clamp(150px, 60vw, 150px);
-  margin: 0 auto;
+  width: 40%;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,17 +106,15 @@ function toggleAccordion(index) {
   color: #c5c6bf;
 }
 
-/* Right column: accordion */
 .experiences-accordion {
   background: #3A4B55;
   padding: 20px;
-  width: 100%;
+  flex: 1;
   box-sizing: border-box;
+  margin: 12px;
 }
 
-.accordion-item {
-  border-bottom: 1px solid #C5C6BF;
-}
+.accordion-item { border-bottom: 1px solid #C5C6BF; }
 
 .accordion-header {
   width: 100%;
@@ -171,38 +129,70 @@ function toggleAccordion(index) {
   color: #fff;
 }
 
-.accordion-arrow svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  transition: transform 0.3s ease;
+.accordion-header {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.accordion-content {
-  padding: 0 0 1rem 0;
-  color: #e3e3e3;
+.accordion-header:hover {
+  color: #FFD77A;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Layout behavior */
-.experience-square,
-.experiences-accordion {
-  flex: 1 1 50%;
+.accordion-content { padding: 0 0 1rem 0; color: #e3e3e3; }
+
+.accordion-content p {
+  padding: 0 20px;
 }
 
-/* Mobile layout */
+/* Fade-in */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms ease, transform 420ms ease;
+  will-change: opacity, transform;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section,
+  .fade-in-section.is-visible {
+    transition: none;
+    transform: none;
+  }
+}
+
 @media (max-width: 768px) {
-  .experiences-content {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .experience-square {
-    max-width: 90%;
-    height: auto;
-  }
-  .experience-square,
-  .experiences-accordion {
-    flex: none;
-    width: 100%;
+	.experiences-content {
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+		margin: 0 auto;
+		padding: 1rem;
+		min-height: 500px;
+	}
+	.experience-square, .experiences-accordion {
+		width: 100%;
+	}
+	.experience-inner img {
+		width: 40px;
+		padding: 6px;
+	}
+	.experience-square {
+		max-width: 380px;
+		max-height: 100px;
+	}
+  .accordion-header {
+    font-size: 14px;
+    text-align: left;
+
   }
 }
+
 </style>

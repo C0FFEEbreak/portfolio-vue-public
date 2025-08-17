@@ -15,23 +15,23 @@ html {
   text-shadow: 2px 2px 2px black;
   margin-bottom: 2rem;
 
-  /* Keep these for grid layouts like Skills */
+  /* Grid layouts */
   grid-column: 1 / -1;
   display: block;
-  position: relative; /* for underline pseudo-element */
+  position: relative;
 }
-
 hr {
-  width: 50%; /* Adjust this to control the line's length (e.g., 50% for half the width) */
-  margin: 0 auto; /* Centers the hr tag horizontally if its width is less than 100% */
-  margin-bottom: 24px;
+  width: 50%;
+  margin: 0 auto 48px auto;
   border: none;
   height: 1px;
-  background-color: #9DA3A4;
+  background-color: #9FC2D0;
 }
 
 /* Section Padding */
-
+.hero {
+  margin-top: 20px;
+}
 .hero, .skills, .projects, .experiences, .education {
   padding: 4rem 4rem;
   padding-bottom: 100px;
@@ -40,7 +40,7 @@ hr {
   margin-top: 1.5rem;  /* space after hr */
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;         /* consistent spacing between cards/items */
+  gap: 1.5rem;  /* consistent spacing between cards/items */
 }
 
 /* Color Scheme */
@@ -92,31 +92,10 @@ footer {
   background: #182025;
 }
 
-
-
-/* Rounded Corner */
-.skill-column.top-left {
-	-webkit-border-top-left-radius: 12px;
-	-moz-border-radius-topleft: 12px;
-	border-top-left-radius: 12px;
-}
-.skill-column.top-right {
-	-webkit-border-top-right-radius: 12px;
-	-moz-border-radius-topright: 12px;
-	border-top-right-radius: 12px;
-}
-.skill-column.bottom-left {
-	-webkit-border-bottom-left-radius: 12px;
-	-moz-border-radius-bottomleft: 12px;
-	border-bottom-left-radius: 12px;
-}
-.skill-column.bottom-right {
-	-webkit-border-bottom-right-radius: 12px;
-	-moz-border-radius-bottomright: 12px;
-	border-bottom-right-radius: 12px;
-}
+/* Borders */
 .project-card {
   border-radius: 12px;
+  border: 4px solid #B5BABA;
 }
 .card-image {
   border-top-left-radius: 12px;
@@ -127,27 +106,31 @@ footer {
 }
 .experiences-accordion {
   border-radius: 12px;
+  border: 4px solid #B5BABA;
 }
 .experience-square {
   border-radius: 12px;
+  border: 4px solid #B5BABA;
 }
 .experience-icon img {
   border-radius: 12px;
 }
-
-
+.skill-column {
+  border-radius: 12px;
+  border: 4px solid #B5BABA;
+}
 
 
 /*  Hero Typing Effect  */
 .typed-cursor {
-  /* Adjust blink speed */
+  /* Blink speed */
   /* animation: blink 1.2s infinite; */
   animation: none !important;
 
-  /* Change cursor color */
+  /* Cursor color */
   color: #FFF;
 
-  /* Change cursor opacity for subtle blinking */
+  /* Cursor opacity for subtle blinking */
   opacity: 1;
 }
 
@@ -160,3 +143,55 @@ footer {
   }
 }
 
+
+#projects, #education {
+  background-color: #29353c;
+}
+#experiences, #skills {
+  background-color: #182025;
+}
+#projects, #education, #experiences, #skills {
+  padding: 4rem 4rem;
+}
+
+/* Section title & divider */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+/* Section drop-shadows */
+#projects, #education, #experiences, #skills, #footer {
+  box-shadow: 0 -18px 35px -25px rgba(0,0,0,0.6); /* 4th adjusts spread  */
+  position: relative;
+  z-index: 0;
+}
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-section .stagger-item {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+.fade-in-section.is-visible .stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section,
+  .fade-in-section .stagger-item {
+    transition: none !important;
+    transform: none !important;
+  }
+}
