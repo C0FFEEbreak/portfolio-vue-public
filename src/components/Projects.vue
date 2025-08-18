@@ -1,5 +1,5 @@
 <template>
-  <section class="projects" id="projects">
+  <section class="projects" id="projects" aria-label="Project portfolio">
     <!-- fade-in -->
     <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
     <h1 class="section-title">Projects</h1>
@@ -8,7 +8,7 @@
     <div class="projects-grid">
       <div v-for="(project, index) in projects" :key="index" class="project-card">
         <a :href="project.url" target="_blank" rel="noopener noreferrer">
-          <img :src="project.image" :alt="project.title" class="card-image" />
+          <img :src="project.image" :alt="project.alt" class="card-image" />
         </a>
 
         <div class="card-main-text">{{ project.title }}</div>
@@ -16,7 +16,7 @@
         <div class="card-footer">
           <div class="footer-text">{{ project.footerText }}</div>
           <div class="footer-icon">
-            <img :src="project.icon" alt="icon" />
+            <img :src="project.icon" alt="CodePen icon" />
           </div>
         </div>
       </div>
@@ -110,8 +110,16 @@ export default {
   padding: 0.8rem 1rem;
 }
 
-.footer-text { font-size: 0.9rem; color: #555; }
-.footer-icon img { width: 20px; height: 20px; }
+.footer-text { 
+  font-size: 0.9rem; 
+  color: #333;
+}
+
+.footer-icon img { 
+  width: 20px; 
+  height: 20px; 
+  alt: "CodePen logo";
+}
 
 /* Fade-in */
 .fade-in-section {

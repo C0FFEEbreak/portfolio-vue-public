@@ -1,6 +1,5 @@
 <template>
-  <section class="education" id="education">
-    <!-- fade-in -->
+  <section class="education" id="education" aria-label="Education and coursework">
     <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
       <h1 class="section-title">Education</h1>
       <hr />
@@ -20,18 +19,22 @@
             </div>
 
             <p class="degree">{{ item.degree }}</p>
-            <span class="dates">{{ item.dates }}</span>
+            <time class="dates" :datetime="item.machineDates">{{ item.dates }}</time>
           </div>
         </div>
 
         <!-- WordSphere column -->
-<div class="education-sphere-wrapper">
-  <div class="wavy-border">
-        <div class="education-sphere" aria-hidden="false">
-          <WordSphere :words="courses" />
+        <div class="education-sphere-wrapper">
+          <div class="wavy-border">
+            <div class="education-sphere" aria-hidden="true">
+              <WordSphere :words="courses" />
+            </div>
+          </div>
+
+          <ul class="sr-only" aria-label="Courses studied">
+            <li v-for="(c, i) in courses" :key="i">{{ c }}</li>
+          </ul>
         </div>
-      </div>
-    </div>
       </div>
     </div>
   </section>
@@ -46,8 +49,19 @@ export default {
   data() {
     return {
       education: [
-        { school: "Ivy Tech State College", degree: "A.A.S., IT Web Management", dates: "1998 – 2001" },
-        { school: "Indiana University Bloomington", degree: "Coursework in Computer Science", dates: "1998 – 2000" }
+        {
+          school: "Ivy Tech State College",
+          degree: "A.A.S., IT Web Management",
+          dates: "1998 – 2001",
+          // machine-readable dates (optional): used in <time datetime=...>
+          machineDates: "1998-2001"
+        },
+        {
+          school: "Indiana University Bloomington",
+          degree: "Coursework in Computer Science",
+          dates: "1998 – 2000",
+          machineDates: "1998-2000"
+        }
       ],
       courses: [
         "Multimedia",
@@ -68,12 +82,20 @@ export default {
 </script>
 
 <style scoped>
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
 /* two columns */
 .education-grid {
   display: flex;
-  gap: 2rem;                /* space between timeline and WordSphere */
-  justify-content: center;  /* center both columns */
-  align-items: center;      /* vertically center WordSphere relative to timeline */
+  gap: 2rem;                
+  justify-content: center;  
+  align-items: center;      
   flex-wrap: nowrap;
 }
 
@@ -93,10 +115,9 @@ export default {
   box-sizing: border-box;
 }
 
-/* dot + school row */
 .timeline-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* <-- fix: top align by default */
   gap: 0.6rem;
 }
 
@@ -107,6 +128,7 @@ export default {
   background: #76A8BC;
   border-radius: 50%;
   flex-shrink: 0;
+  margin-top: 4px; /* small visual nudge to sit next to first text line */
 }
 
 /* school title */
@@ -137,24 +159,19 @@ export default {
   font-size: 0.9rem;
 }
 
-
 /* Wavy border */
 .wavy-border {
-  --s: 360px; /* border size */
+  --s: 360px;
   width: var(--s);
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: #9DA3A4; /* border color */
+  background: #9DA3A4;
   -webkit-mask: var(--m);
   mask: var(--m);
-
-  /* Mask */
   --g:/calc(var(--s)*0.198) calc(var(--s)*0.198)
     radial-gradient(50% 50%, #000 99%, #0000 101%) no-repeat;
-
   --m: 
     calc(50% + var(--s)*0.373) calc(50% + var(--s)*0) var(--g),
     calc(50% + var(--s)*0.301) calc(50% + var(--s)*0.219) var(--g),
@@ -215,7 +232,7 @@ export default {
   pointer-events: none;
 }
 
-/* Fade-in */
+/* Fade-in (kept) */
 .fade-in-section {
   opacity: 0;
   transform: translateY(10px);
@@ -226,14 +243,12 @@ export default {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* responsive tweaks */
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
-  .fade-in-section.is-visible {
-    transition: none;
-    transform: none;
-  }
+  .fade-in-section.is-visible { transition: none; transform: none; }
 }
-
 
 @media (max-width: 768px) {
   .education-grid {
@@ -262,6 +277,10 @@ export default {
   }
 }
 
+@media (min-width: 720px) {
+  .timeline-row { align-items: center; }
+}
+
 @media (max-width: 420px) {
   .timeline-content {
     padding-inline: 0.75rem;
@@ -271,13 +290,6 @@ export default {
     width: 220px;
     height: 220px;
   }
-.timeline-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-}
-.timeline-dot {
-  margin-top: 4px;
-}
+  .timeline-dot { margin-top: 4px; }
 }
 </style>

@@ -97,21 +97,20 @@ onUnmounted(() => {
 .name {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #76A8BC;
+  color: #5F97AD;
   margin: 0 auto;
 }
 
 .title {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
   white-space: nowrap;
-  color: #76A8BC;
+  color: #5F97AD;
   margin: 0 auto;
 }
 
 /* Typed cursor style */
 .title > span {
-  border-right: 2px solid #000; /* mimics cursor */
+  /* border-right: 2px solid #000; mimics cursor */
   padding-right: 2px;
   white-space: nowrap;
   display: inline-block;

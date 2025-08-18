@@ -25,8 +25,8 @@
 <script setup>
 const skills = [
   { icon: new URL("../assets/icons/icon-web.svg", import.meta.url).href, title: "Web Development", items: ["AngularJS", "Bootstrap", "CSS3", "HTML5", "JavaScript", "jQuery", "UI/UX Design", "Vue.js", "WordPress"] },
-  { icon: new URL("../assets/icons/icon-authoring.svg", import.meta.url).href, title: "Authoring Tools", items: ["Articulate Storyline", "Articulate Rise", "Captivate", "Lectora"] },
-  { icon: new URL("../assets/icons/icon-media.svg", import.meta.url).href, title: "Media Tools", items: ["After Effects", "Adobe Animate", "Audacity", "Camtasia", "Premiere Pro"] },
+  { icon: new URL("../assets/icons/icon-authoring.svg", import.meta.url).href, title: "Authoring Tools", items: ["Articulate Rise", "Articulate Storyline", "Captivate", "Lectora"] },
+  { icon: new URL("../assets/icons/icon-media.svg", import.meta.url).href, title: "Media Tools", items: ["Adobe Animate", "After Effects", "Audacity", "Camtasia", "Premiere Pro"] },
   { icon: new URL("../assets/icons/icon-deign.svg", import.meta.url).href, title: "Design", items: ["Illustrator", "Photoshop"] },
   { icon: new URL("../assets/icons/icon-accessibility.svg", import.meta.url).href, title: "Accessibility", items: ["508 Compliance", "QA Testing", "SCORM"] },
   { icon: new URL("../assets/icons/icon-other.svg", import.meta.url).href, title: "Other", items: ["Adobe Acrobat", "LMS", "MS Office", "Technical Support", "Version Control"] }
@@ -54,11 +54,11 @@ const skills = [
 
 .skill-header {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: auto 1fr;
   align-items: center;
   background: linear-gradient(180deg, #101719, #202E32);
   padding: 0.75rem;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .skill-icon img {
@@ -73,6 +73,8 @@ const skills = [
   letter-spacing: 0.03em;
   color: #fff;
   line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: anywhere; 
 }
 
 .skill-list {

@@ -1,17 +1,20 @@
 <template>
-  <footer id="footer" class="site-footer" role="contentinfo" aria-label="Footer">
+  <footer id="footer" class="site-footer" aria-label="Footer">
     <div class="section-inner footer-inner">
-      <div class="footer-line">
-        <span>©{{ year }}</span>
+      <address class="footer-line">
+        <span aria-hidden="true">©{{ year }}</span>
+
+        <!-- semantic address + accessible link -->
         <a
           :href="mailtoLink"
           class="footer-name"
-          :aria-label="`Email ${emailUser}@${emailDomain}`"
+          :aria-label="`Email ${displayName}`"
         >
           {{ displayName }}
         </a>
-        <span> All Rights Reserved.</span>
-      </div>
+
+        <span aria-hidden="true">All Rights Reserved.</span>
+      </address>
     </div>
   </footer>
 </template>
@@ -19,17 +22,19 @@
 <script setup>
 import { computed } from 'vue'
 
-// ========================
-const emailUser = 'youremail'      // before the @
+// ====== CONFIG ============================================
+const emailUser = 'youremail'      // before the @ — consider using import.meta.env for production
 const emailDomain = 'example.com'  // domain
-const displayName = 'Stacey Trent Donica.'       // visible name in footer
-// ========================
+const displayName = 'Stacey Trent Donica' // visible name in footer (trim trailing punctuation)
+// ===========================================================
 
 const year = new Date().getFullYear()
 
 const mailtoLink = computed(() => {
   const addr = `${emailUser}@${emailDomain}`
-  // no subject/body prefill here — simple direct mailto
+  // If you want a prefilled subject/body:
+  // const subject = encodeURIComponent('Hello');
+  // return `mailto:${addr}?subject=${subject}`
   return `mailto:${addr}`
 })
 </script>
@@ -44,10 +49,9 @@ const mailtoLink = computed(() => {
 .footer-inner {
   display: flex;
   justify-content: center;
-  padding: 1rem 0; /* vertical spacing — horizontal padding comes from .section-inner */
+  padding: 1rem 0;
 }
 
-/* single-line layout */
 .footer-line {
   display: inline-flex;
   gap: 0.35rem;
@@ -55,14 +59,17 @@ const mailtoLink = computed(() => {
   flex-wrap: wrap;
   justify-content: center;
   color: inherit;
+  text-decoration: none;
+  line-height: 1.25;
 }
 
+/* link */
 .footer-name {
   color: #9FC2D0;
   text-decoration: none;
   padding: 2px 4px;
   border-radius: 4px;
-  transition: color 150ms ease, background-color 150ms ease;
+  transition: color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
 .footer-name:hover,
@@ -73,19 +80,4 @@ const mailtoLink = computed(() => {
   box-shadow: 0 0 0 3px rgba(159,194,208,0.08);
 }
 
-.footer-name:focus {
-  border-radius: 4px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
 </style>

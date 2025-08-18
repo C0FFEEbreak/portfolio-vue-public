@@ -24,7 +24,7 @@ const navLinks = [
 <style scoped>
 .site-header {
   position: fixed;
-  top: 1rem;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

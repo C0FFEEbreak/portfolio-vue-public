@@ -1,14 +1,17 @@
 <template>
   <div id="app">
     <Header />
-    <Hero />
-    <Skills />
-    <Projects />
-    <Experiences />
-    <Education />
+    <main>
+      <Hero />
+      <Skills />
+      <Projects />
+      <Experiences />
+      <Education />
+    </main>
     <Footer />
   </div>
 </template>
+
 
 <script setup>
 import Header from './components/Header.vue'
@@ -21,10 +24,5 @@ import Footer from './components/Footer.vue'
 </script>
 
 <style scoped>
-#app {
-  font-family: sans-serif;
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
-}
+/* CSS Here */
 </style>
