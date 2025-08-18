@@ -17,7 +17,7 @@ export default [
   {
     icon: '',
     category: 'IT Hardware Technician',
-    description: 'Provided technical support for employees on Windows and Mac systems. Repaired computers, laptops, and printers. Solved technical problems related to software and network. Configured and maintained software programs for office staff.'
+    description: 'Provided technical support on Windows and Mac systems. Repaired computers and laptops. Solved technical issues with software. Configured and maintained software programs.'
   },
   {
     icon: '',

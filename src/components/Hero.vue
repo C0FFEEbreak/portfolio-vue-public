@@ -23,7 +23,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import Typed from "typed.js";
 
 const name = "Hi, I'm Stacey Trent Donica.";
-const tagline = "Designing and developing web experiences that engage.";
+const tagline = "Designing and developing engaging web experiences.";
 
 const typed = ref(null);
 let typedInstance = null;
@@ -220,5 +220,10 @@ onUnmounted(() => {
   .bg-blob { display: none; } /* hide blobs */
   .name { font-size: 1.75rem; }
   .tagline { font-size: 0.98rem; }
+}
+@media (max-width: 420px) {
+  p.title {
+    font-size: 1.3rem;
+  }
 }
 </style>

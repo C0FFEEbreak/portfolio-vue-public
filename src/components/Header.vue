@@ -102,15 +102,22 @@ const navLinks = [
   }
 }
 @media (max-width: 420px) {
-  nav {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-    padding: 0.25rem 0.5rem;
-  }
+	nav {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+	nav a {
+		font-size: 1.05rem;
+	}
+	.site-header {
+		padding: 1rem .5rem;
+	}
+	.site-header nav ul {
+		gap: .12rem;
+	}
+	.site-header nav ul li a {
+		padding: 0.2rem 0.5rem;
+	}
 }
 
 </style>

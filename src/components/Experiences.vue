@@ -213,4 +213,17 @@ function toggleAccordion(index) {
 
   }
 }
+@media (max-width: 420px) {
+	.experiences-accordion {
+		padding: 8px;
+		margin: 0;
+	}
+	.experience-square {
+		max-width: 250px;
+	}
+	.accordion-content p {
+		margin: 0;
+		padding: 0 4px 8px 0;
+	}
+}
 </style>

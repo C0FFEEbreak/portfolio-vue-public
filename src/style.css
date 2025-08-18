@@ -55,7 +55,6 @@ div#app {
 
 h1, h2, li, p {
   color: #C5C6BF;
-
   font-family: "Jost", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -175,5 +174,17 @@ footer {
   .fade-in-section .stagger-item {
     transition: none !important;
     transform: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #projects, #education, #experiences, #skills {
+	  padding: 1rem;
+  }
+  hr {
+	  width: 95%;
+  }
+  div#app {
+    padding: 1rem 0.2rem;
   }
 }
