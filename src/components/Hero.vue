@@ -216,7 +216,7 @@ onUnmounted(() => {
   .blob-white { --w: 360px; left: 6%; top: 18%; }
 }
 @media (max-width: 720px) {
-  .hero { padding: 2.25rem 1rem; }
+  .hero { padding: 4rem 1rem; }
   .bg-blob { display: none; } /* hide blobs */
   .name { font-size: 1.75rem; }
   .tagline { font-size: 0.98rem; }
