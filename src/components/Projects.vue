@@ -11,12 +11,27 @@
           <img :src="project.image" :alt="project.alt" class="card-image" />
         </a>
 
-        <div class="card-main-text">{{ project.title }}</div>
+        <div class="card-content">
+          <div class="card-main-text">{{ project.title }}</div>
+          
+          <!-- Description -->
+          <p v-if="project.description" class="card-description">
+            {{ project.description }}
+          </p>
+        </div>
 
         <div class="card-footer">
           <div class="footer-text">{{ project.footerText }}</div>
-          <div class="footer-icon">
-            <img :src="project.icon" alt="CodePen icon" />
+          <div class="tech-icons">
+            <span
+              v-for="tech in project.tech"
+              :key="tech"
+              class="tech-icon"
+              :data-tech="tech"
+              :title="getTechLabel(tech)"
+            >
+              {{ tech.toUpperCase()[0] }}
+            </span>
           </div>
         </div>
       </div>
@@ -35,33 +50,105 @@ import img6 from "@/assets/06.jpg";
 import img7 from "@/assets/07.jpg";
 import img8 from "@/assets/08.jpg";
 import img9 from "@/assets/09.jpg";
-import icon1 from "@/assets/icons/icon-codepen.png";
 
 export default {
   name: "Projects",
   data() {
     return {
       projects: [
-        { title: "Website", image: img1, url: "https://codepen.io/coffeebreaks/pen/ZEPbXgJ", footerText: "Paw Spa Grooming", icon: icon1,
-          alt: "Screenshot of animal website", },
-        { title: "Web Activity", image: img2, url: "https://codepen.io/coffeebreaks/pen/RwvvpBM", footerText: "Multiple Choice", icon: icon1,
-          alt: "Screenshot of nature activity", },
-        { title: "Website", image: img3, url: "https://codepen.io/coffeebreaks/pen/wvOBKNx", footerText: "Yume Poke", icon: icon1,
-          alt: "Screenshot of restaurant website", },
-        { title: "Web Activity", image: img4, url: "https://codepen.io/coffeebreaks/pen/NWojJwP", footerText: "Click to Reveal", icon: icon1,
-          alt: "Screenshot of sports activity", },
-        { title: "Web Activity", image: img5, url: "https://codepen.io/coffeebreaks/pen/gOqdMMK", footerText: "Click to Reveal", icon: icon1,
-          alt: "Screenshot of travel activity", },
-        { title: "JS Tool", image: img6, url: "https://codepen.io/coffeebreaks/pen/QWYEjeR", footerText: "Checklist", icon: icon1,
-          alt: "Screenshot of checklist", },
-        { title: "JS Tool", image: img7, url: "https://codepen.io/coffeebreaks/pen/gOqMVmd", footerText: "Calculator", icon: icon1,
-          alt: "Screenshot of calculator", },
-        { title: "Web Activity", image: img9, url: "https://codepen.io/coffeebreaks/pen/bGZejrP", footerText: "Click to Reveal", icon: icon1,
-          alt: "Screenshot of sports activity", },
-        { title: "JS Tool", image: img8, url: "https://codepen.io/coffeebreaks/pen/oNmLZoq", footerText: "Stopwatch", icon: icon1,
-          alt: "Screenshot of JS stopwatch", }
+        {
+          title: "Business Website",
+          image: img1,
+          url: "https://codepen.io/coffeebreaks/pen/ZEPbXgJ",
+          footerText: "Paw Spa",
+          alt: "Screenshot of animal website",
+          description: "Responsive multi-page website with service showcase and contact information.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Interactive Quiz",
+          image: img2,
+          url: "https://codepen.io/coffeebreaks/pen/RwvvpBM",
+          footerText: "Multiple Choice",
+          alt: "Screenshot of nature activity",
+          description: "Multi-question quiz with instant feedback and score tracking.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Restaurant Website",
+          image: img3,
+          url: "https://codepen.io/coffeebreaks/pen/wvOBKNx",
+          footerText: "Yume Poke",
+          alt: "Screenshot of restaurant website",
+          description: "Mobile-optimized restaurant site with menu display and location info.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Hotspot Activity",
+          image: img4,
+          url: "https://codepen.io/coffeebreaks/pen/NWojJwP",
+          footerText: "Click to Reveal",
+          alt: "Screenshot of sports activity",
+          description: "Interactive image with clickable hotspots revealing hidden content.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Image Reveal Game",
+          image: img5,
+          url: "https://codepen.io/coffeebreaks/pen/gOqdMMK",
+          footerText: "Click to Reveal",
+          alt: "Screenshot of travel activity",
+          description: "Click-to-reveal activity with interactive image elements.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Task Checklist",
+          image: img6,
+          url: "https://codepen.io/coffeebreaks/pen/QWYEjeR",
+          footerText: "Checklist",
+          alt: "Screenshot of checklist",
+          description: "Dynamic checklist with add/remove functionality using local storage.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Calculator Tool",
+          image: img7,
+          url: "https://codepen.io/coffeebreaks/pen/gOqMVmd",
+          footerText: "Calculator",
+          alt: "Screenshot of calculator",
+          description: "Functional calculator with keyboard input support and basic operations.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Content Reveal",
+          image: img9,
+          url: "https://codepen.io/coffeebreaks/pen/bGZejrP",
+          footerText: "Click to Reveal",
+          alt: "Screenshot of sports activity",
+          description: "Interactive content reveal with smooth CSS animations.",
+          tech: ['js', 'html', 'css']
+        },
+        {
+          title: "Stopwatch Timer",
+          image: img8,
+          url: "https://codepen.io/coffeebreaks/pen/oNmLZoq",
+          footerText: "Stopwatch",
+          alt: "Screenshot of JS stopwatch",
+          description: "Precise stopwatch with start, stop, and reset functionality.",
+          tech: ['js', 'html', 'css']
+        }
       ]
     };
+  },
+  methods: {
+    getTechLabel(tech) {
+      const labels = {
+        html: 'HTML5',
+        css: 'CSS3',
+        js: 'JavaScript'
+      };
+      return labels[tech] || tech;
+    }
   }
 };
 </script>
@@ -94,31 +181,110 @@ export default {
   transition: transform 0.3s ease;
 }
 
-.project-card a:hover .card-image { transform: scale(1.05); }
-
-.card-main-text {
-  padding: 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-  border-bottom: 1px solid #C5C6BF;
+.project-card a:hover .card-image { 
+  transform: scale(1.05); 
 }
 
+/* Card content wrapper */
+.card-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-main-text {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Description text */
+.card-description {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Card footer - project name + tech icons */
 .card-footer {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1rem;
+  border-top: 1px solid #b0b0b0;
 }
 
 .footer-text { 
   font-size: 0.9rem; 
-  color: #333;
+  color: #666;
+  font-weight: 500;
 }
 
-.footer-icon img { 
-  width: 20px; 
-  height: 20px; 
-  alt: "CodePen logo";
+/* Tech icons in footer */
+.tech-icons {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.tech-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: help;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.tech-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.tech-icon[data-tech="html"] {
+  background-color: #5F97AD;
+}
+
+.tech-icon[data-tech="css"] {
+  background-color: #29353C;
+}
+
+.tech-icon[data-tech="js"] {
+  background-color: #9DA3A4;
+  color: #182025;
+}
+
+/* Tooltip on hover */
+.tech-icon::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  margin-bottom: 4px;
+  z-index: 10;
+}
+
+.tech-icon:hover::after {
+  opacity: 1;
 }
 
 /* Fade-in */
@@ -128,10 +294,12 @@ export default {
   transition: opacity 420ms ease, transform 420ms ease;
   will-change: opacity, transform;
 }
+
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
   .fade-in-section.is-visible {
@@ -140,6 +308,30 @@ export default {
   }
 }
 
-@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; gap: 68px; } }
+@media (max-width: 900px) { 
+  .projects-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  } 
+}
+
+@media (max-width: 600px) { 
+  .projects-grid { 
+    grid-template-columns: 1fr; 
+    gap: 68px; 
+  }
+  
+  .tech-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.65rem;
+  }
+  
+  .card-footer {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .footer-text {
+    font-size: 0.85rem;
+  }
+}
 </style>

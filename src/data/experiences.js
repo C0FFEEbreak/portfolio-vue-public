@@ -1,32 +1,32 @@
 export default [
   {
     icon: '',
-    category: 'Web Management',
-    description: 'Built and tested websites under a deadline. Be certain the websites passed accessibility standards and formatted for different devices and screen layouts.'
+    category: 'Web Development',
+    description: 'Built responsive, accessible websites for educational institutions and businesses. Ensured WCAG compliance and cross-browser compatibility using HTML5, CSS3, and JavaScript.'
   },
   {
     icon: '',
-    category: 'Course Development',
-    description: 'Collaborated with team members and developed online courses with interactive content using code and software with graphics, video, and audio.'
+    category: 'eLearning Development',
+    description: 'Created interactive online courses using Articulate Storyline, Captivate, and custom code. Worked with instructional designers to build engaging learning experiences with video, audio, and graphics.'
   },
   {
     icon: '',
-    category: 'Media Coordinator',
+    category: 'Media Management',
     description: 'Managed television channels for Indiana University. Created advertisements, scheduled and programmed movies for two cable channels. Recorded and edited professional talent for photoshoots, video sessions, and audio for online courses.'
   },
   {
     icon: '',
     category: 'IT Hardware Technician',
-    description: 'Provided technical support on Windows and Mac systems. Repaired computers and laptops. Solved technical issues with software. Configured and maintained software programs.'
+    description: 'Provided technical support for Windows and Mac systems. Repaired hardware, troubleshot software issues, and configured applications for enterprise environments.'
   },
   {
     icon: '',
-    category: 'Interactive Web Design',
-    description: 'Designed and animated graphics for media output using Adobe Animate, After Effects, and Flash. Responsible for conception and design of websites.'
+    category: 'Interactive Design & Animation',
+    description: 'Designed web graphics and animations using Adobe Creative Suite (Animate, After Effects, Illustrator). Created user interfaces and interactive components focused on user experience and visual storytelling.'
   },
   {
     icon: '',
-    category: 'Proofreader',
-    description: 'Read and corrected digital media such as web pages, brochures, and customer applications.'
+    category: 'Quality Assurance & Review',
+    description: 'Tested and reviewed digital content including web applications, publications, and customer materials. Ensured accuracy, consistency, and adherence to standards across all deliverables.'
   }
 ];

@@ -51,16 +51,18 @@ export default {
       education: [
         {
           school: "Ivy Tech State College",
-          degree: "A.A.S., IT Web Management",
-          dates: "1998 – 2001",
-          // machine-readable dates (optional): used in <time datetime=...>
-          machineDates: "1998-2001"
+          degree: "A.A.S., IT Web Management"
+          // dates: "1998 – 2001"
         },
         {
           school: "Indiana University Bloomington",
-          degree: "Coursework in Computer Science",
-          dates: "1998 – 2000",
-          machineDates: "1998-2000"
+          degree: "Coursework in Computer Science"
+          // dates: "1998 – 2000"
+        },
+        {
+          school: "Professional Development",
+          degree: "Modern Web Technologies & Accessibility Standards",
+          dates: "Ongoing"
         }
       ],
       courses: [
@@ -68,7 +70,7 @@ export default {
         "Visual Communications",
         "Digital Imaging",
         "Database Management",
-        "Graphics Design",
+        "Graphic Design",
         "Electronic Publication",
         "Typography",
         "Network Fundamentals",

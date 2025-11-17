@@ -2,17 +2,8 @@
   <footer id="footer" class="site-footer" aria-label="Footer">
     <div class="section-inner footer-inner">
       <address class="footer-line">
-        <span aria-hidden="true">©{{ year }}</span>
-
-        <!-- semantic address + accessible link -->
-        <a
-          :href="mailtoLink"
-          class="footer-name"
-          :aria-label="`Email ${displayName}`"
-        >
-          {{ displayName }}
-        </a>
-
+        <span aria-hidden="true">© {{ year }}</span>
+        <span class="footer-name">{{ displayName }}</span>
         <span aria-hidden="true">All Rights Reserved.</span>
       </address>
     </div>
@@ -20,23 +11,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-// ====== CONFIG ============================================
-const emailUser = 'youremail'      // before the @ — consider using import.meta.env for production
-const emailDomain = 'example.com'  // domain
-const displayName = 'Stacey Trent Donica' // visible name in footer (trim trailing punctuation)
-// ===========================================================
-
 const year = new Date().getFullYear()
-
-const mailtoLink = computed(() => {
-  const addr = `${emailUser}@${emailDomain}`
-  // If you want a prefilled subject/body:
-  // const subject = encodeURIComponent('Hello');
-  // return `mailto:${addr}?subject=${subject}`
-  return `mailto:${addr}`
-})
+const displayName = 'Stacey Trent Donica'
 </script>
 
 <style scoped>
@@ -72,7 +48,6 @@ const mailtoLink = computed(() => {
   transition: color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
-.footer-name:hover,
 .footer-name:focus {
   color: #C5E9F2;
   background-color: rgba(159,194,208,0.06);
