@@ -188,3 +188,9 @@ footer {
     padding: 1rem 0.2rem;
   }
 }
+/* Touch devices only */
+@media (hover: none) and (pointer: coarse) {
+  #projects, #education, #experiences, #skills {
+    padding: 2rem 2rem;
+  }
+}

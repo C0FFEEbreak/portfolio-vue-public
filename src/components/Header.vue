@@ -119,5 +119,10 @@ const navLinks = [
 		padding: 0.2rem 0.5rem;
 	}
 }
-
+/* Hide nav on touch devices only */
+@media (hover: none) and (pointer: coarse) {
+  .site-header {
+    display: none;
+  }
+}
 </style>

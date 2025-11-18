@@ -22,7 +22,7 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import Typed from "typed.js";
 
-const name = "Hi, I'm Stacey Trent Donica.";
+const name = "Stacey Trent Donica";
 const tagline = "Creating accessible web experiences and interactive eLearning courses.";
 
 const typed = ref(null);
@@ -226,4 +226,11 @@ onUnmounted(() => {
     font-size: 1.3rem;
   }
 }
+/* Touch devices only */
+@media (hover: none) and (pointer: coarse) {
+  .hero {
+    padding: 2rem 2rem;
+  }
+}
+
 </style>
