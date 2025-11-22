@@ -23,7 +23,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import Typed from "typed.js";
 
 const name = "Stacey Trent Donica";
-const tagline = "Creating accessible web experiences and interactive eLearning courses.";
+const tagline = "Creating years of accessible web experiences and interactive eLearning courses.";
 
 const typed = ref(null);
 let typedInstance = null;
