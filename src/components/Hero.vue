@@ -1,19 +1,39 @@
 <template>
   <section class="hero" role="banner" aria-label="Intro">
-    <!-- Blobs -->
-    <div class="bg-blobs" aria-hidden="true">
-      <div class="bg-blob blob-black"></div>
-      <div class="bg-blob blob-white"></div>
+    <!-- Geometric Background Elements -->
+    <div class="geometric-bg" aria-hidden="true">
+      <!-- Large Yellow Circle - Primary -->
+      <div class="circle circle-large"></div>
+      
+      <!-- Medium Yellow Circle -->
+      <div class="circle circle-medium"></div>
+      
+      <!-- Small Yellow Circle -->
+      <div class="circle circle-small"></div>
+      
+      <!-- Half Circle - Left -->
+      <div class="half-circle"></div>
+      
+      <!-- Ring/Outline Circle -->
+      <div class="ring-circle"></div>
+      
+      <!-- Dot Pattern Overlay -->
+      <div class="dot-grid"></div>
+      
+      <!-- Large Initial Letter as Graphic Element -->
+      <div class="letter-graphic">S</div>
     </div>
 
     <div class="hero-inner">
-      <h1 class="name">{{ name }}</h1>
+      <div class="content-wrapper">
+        <h1 class="name">{{ name }}</h1>
 
-      <p class="title">
-        I'm a <span ref="typed"></span>
-      </p>
+        <p class="title">
+          I'm a <span ref="typed"></span>
+        </p>
 
-      <p class="tagline">{{tagline}}</p>
+        <p class="tagline">{{ tagline }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -23,11 +43,10 @@ import { onMounted, onUnmounted, ref } from "vue";
 import Typed from "typed.js";
 
 const name = "Stacey Trent Donica";
-const tagline = "Creating years of accessible web experiences and interactive eLearning courses.";
+const tagline = "Creating years of modern web experiences and interactive eLearning courses.";
 
 const typed = ref(null);
 let typedInstance = null;
-
 
 const reducedMotion =
   typeof window !== "undefined" &&
@@ -38,7 +57,6 @@ onMounted(() => {
   if (!typed.value) return;
 
   if (reducedMotion) {
-    // show first role static for reduced-motion users
     typed.value.textContent = "Front-End Developer";
     return;
   }
@@ -69,168 +87,364 @@ onUnmounted(() => {
 
 <style scoped>
 .hero {
-  text-align: left;
-  background-color: #29353C; /* fallback color */
-  /*  background-image: url('@/assets/blurry-gradient.png');  */
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  position: relative;      /* background blobs */
-  overflow: hidden;        /* blobs container */
-  padding: 3.5rem 1.25rem;
-  color: #C5C6BF;
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
 }
 
 .hero-inner {
   max-width: 1100px;
   margin: 0 auto;
-  margin-top: 0.8rem;
-  position: relative; /* ensure blob layer */
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.content-wrapper {
+  text-align: left;
+  max-width: 480px;
 }
 
 .name {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #5F97AD;
-  margin: 0 auto;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .title {
-  font-size: 1.5rem;
-  white-space: nowrap;
-  color: #5F97AD;
-  margin: 0 auto;
+  font-size: 1.75rem;
+  color: #ffd77a;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Typed cursor style */
 .title > span {
-  /* border-right: 2px solid #000; mimics cursor */
   padding-right: 2px;
   white-space: nowrap;
   display: inline-block;
 }
 
 .tagline {
-  font-size: 1rem;
-  max-width: 100%;
-  color: #C5C6BF;
-  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #E5E7EB;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* ========== blob background  ========== */
+/* ========== GEOMETRIC BACKGROUND ========== */
 
-/* container for blobs */
-.bg-blobs {
+.geometric-bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.bg-blob {
+/* Large Yellow Circle - Main focal point */
+.circle-large {
   position: absolute;
-  pointer-events: none;
+  width: 480px;
+  height: 480px;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #374C53;
+  border-radius: 50%;
+  opacity: 0.95;
+  z-index: 2;
+}
+
+/* Medium Circle */
+.circle-medium {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  right: 3%;
+  top: 8%;
+  background: #ffcc5c;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+/* Small Circle */
+.circle-small {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  right: 60%;
+  top: 12%;
+  background: #ffd77a;
+  border-radius: 50%;
+  opacity: 0.85;
+  z-index: 3;
+}
+
+/* Half Circle - Left Side */
+.half-circle {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  left: -90px;
+  top: 18%;
+  background: #3e3e3e;
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* Ring Circle */
+.ring-circle {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: 10%;
+  bottom: 04%;
+  border: 8px solid #ffd77a;
+  border-radius: 50%;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Dot Pattern Grid */
+.dot-grid {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  right: 16%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: radial-gradient(
+    circle,
+    #2d2d2d 2.5px,
+    transparent 2.5px
+  );
+  background-size: 18px 18px;
+  opacity: 0.8;
+  z-index: 4;
+}
+
+/* Large Letter Graphic */
+.letter-graphic {
+  position: absolute;
+  font-size: 24rem;
+  font-weight: 900;
+  color: #2d2d2d;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  z-index: 5;
+  opacity: 0.95;
+  letter-spacing: -0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   user-select: none;
-  filter: blur(6px);
-  mix-blend-mode: normal;
-  opacity: 1;
-  transition: opacity 240ms ease;
-  will-change: border-radius, transform, opacity;
+  pointer-events: none;
 }
 
-/* Black blob */
-.blob-black {
-  --w: 520px; /*  entire width  */
-  width: var(--w);
-  height: calc(var(--w) * 0.95);
-  right: 4%;
-  top: 4%;
-  z-index: 1;
+/* ========== ANIMATIONS ========== */
 
-  /* black center transparent edge */
-  background: radial-gradient(
-    circle at 45% 40%,
-    rgba(126,25,70,0.98) 0%,
-    rgba(126,25,70,0.95) 46%,
-    rgba(126,25,70,0.32) 72%,
-    rgba(126,25,70,0) 100%
-  );
-
-  /* organic shape */
-  border-radius: 46% 54% 52% 48% / 48% 50% 50% 52%;
-  opacity: 0.18;  /* controls blob right */
-  transform-origin: center;
+@keyframes floatCircle {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-8px);
+  }
 }
 
-/* White blob */
-.blob-white {
-  --w: 420px; /*  entire width  */
-  width: var(--w);
-  height: calc(var(--w) * 1.06);
-  left: 8%;
-  top: 24%;
-  z-index: 1;
-
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(247,236,89,0.95) 0%,
-    rgba(247,236,89,0.95) 46%,
-    rgba(247,236,89,0.95) 70%,
-    rgba(247,236,89,0.95) 100%
-  );
-
-  border-radius: 52% 48% 46% 54% / 52% 46% 54% 48%;
-  opacity: 0.04;  /* blob left */
-  transform-origin: center;
+@keyframes floatSmall {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.05);
+  }
 }
 
-@keyframes blobFloatA {
-  0% { transform: translateY(0) rotate(-1deg); border-radius: 22% 28% 26% 44% / 22% 26% 24% 38%; }
-  50% { transform: translateY(-6px) rotate(1deg); border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%; }
-  100% { transform: translateY(0) rotate(-1deg); border-radius: 22% 28% 26% 44% / 22% 26% 24% 38%; }
+@keyframes pulseDots {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
-@keyframes blobFloatB {
-  0% { transform: translateY(0) rotate(2deg); border-radius: 32% 38% 36% 54% / 32% 36% 34% 48%; }
-  50% { transform: translateY(4px) rotate(-2deg); border-radius: 54% 46% 48% 52% / 46% 54% 50% 50%; }
-  100% { transform: translateY(0) rotate(2deg); border-radius: 32% 38% 36% 54% / 32% 36% 34% 48%; }
-}
-
 
 @media (prefers-reduced-motion: no-preference) {
-  .blob-black { animation: blobFloatA 8s ease-in-out infinite; }
-  .blob-white { animation: blobFloatB 4s ease-in-out infinite; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .blob-black, .blob-white { animation: none !important; }
+  .circle-large {
+    animation: floatCircle 6s ease-in-out infinite;
+  }
+  .circle-small {
+    animation: floatSmall 4s ease-in-out infinite;
+  }
+  .dot-grid {
+    animation: pulseDots 3s ease-in-out infinite;
+  }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .circle-large,
+  .circle-small,
+  .dot-grid {
+    animation: none !important;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1200px) {
+  .letter-graphic {
+    font-size: 20rem;
+    right: -3%;
+  }
+  .circle-large {
+    width: 420px;
+    height: 420px;
+  }
+}
 
 @media (max-width: 980px) {
-  .blob-black { --w: 420px; right: 4%; top: 8%; }
-  .blob-white { --w: 360px; left: 6%; top: 18%; }
-}
-@media (max-width: 720px) {
-  .hero { padding: 4rem 1rem; }
-  .bg-blob { display: none; } /* hide blobs */
-  .name { font-size: 1.75rem; }
-  .tagline { font-size: 0.98rem; }
-}
-@media (max-width: 420px) {
-  p.title {
-    font-size: 1.3rem;
-  }
-}
-/* Touch devices only */
-@media (hover: none) and (pointer: coarse) {
   .hero {
-    padding: 2rem 2rem;
+    padding: 3.5rem 1.5rem;
+    min-height: 360px;
+  }
+  
+  .letter-graphic {
+    font-size: 16rem;
+    right: -6%;
+  }
+  
+  .circle-large {
+    width: 340px;
+    height: 340px;
+  }
+  
+  .circle-medium {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .dot-grid {
+    width: 240px;
+    height: 200px;
+  }
+  
+  .name {
+    font-size: 2.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .content-wrapper {
+    max-width: 480px;
   }
 }
 
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1.5rem;
+    min-height: 340px;
+  }
+  
+  .content-wrapper {
+    max-width: 100%;
+  }
+  
+  /* Simplify geometric elements on mobile */
+  .letter-graphic {
+    font-size: 12rem;
+    right: -12%;
+    opacity: 0.7;
+  }
+  
+  .circle-large {
+    width: 260px;
+    height: 260px;
+    right: -8%;
+  }
+  
+  .circle-medium {
+    width: 90px;
+    height: 90px;
+    right: 2%;
+    top: 6%;
+  }
+  
+  .circle-small,
+  .ring-circle {
+    display: none;
+  }
+  
+  .dot-grid {
+    width: 160px;
+    height: 140px;
+    right: 8%;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2.5rem 1.25rem;
+    min-height: 320px;
+  }
+  
+  .letter-graphic {
+    font-size: 9rem;
+    right: -18%;
+  }
+  
+  .circle-large {
+    width: 190px;
+    height: 190px;
+    right: -12%;
+  }
+  
+  .half-circle {
+    width: 130px;
+    height: 130px;
+    left: -65px;
+  }
+  
+  .name {
+    font-size: 1.75rem;
+  }
+  
+  .tagline {
+    font-size: 0.95rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hero {
+    padding: 3rem 1.5rem;
+    min-height: 180px;
+  }
+}
 </style>

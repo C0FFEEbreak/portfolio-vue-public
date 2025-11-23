@@ -197,5 +197,8 @@ footer {
   #projects, #education, #experiences, #skills {
     padding: 2rem 2rem;
   }
+  .hero {
+    margin-top: 0;
+  }
 }
 
