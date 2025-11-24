@@ -15,11 +15,13 @@
 
       <div class="education-grid">
         <!-- Timeline column -->
-        <div class="education-timeline">
+        <div class="education-timeline" ref="timeline">
           <div
             v-for="(item, index) in education"
             :key="index"
             class="timeline-content"
+            :class="{ 'is-visible': timelineVisible }"
+            :style="{ '--item-index': index }"
           >
             <!-- Row that contains dot + school name -->
             <div class="timeline-row">
@@ -57,6 +59,7 @@ export default {
   components: { WordSphere },
   data() {
     return {
+      timelineVisible: false,
       education: [
         {
           school: "Ivy Tech State College",
@@ -88,6 +91,35 @@ export default {
         "System Analysis"
       ]
     };
+  },
+  mounted() {
+    this.setupObserver();
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
+  methods: {
+    setupObserver() {
+      const options = {
+        root: null,
+        threshold: 0.5,
+        rootMargin: '-100px 0px'
+      };
+
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !this.timelineVisible) {
+            this.timelineVisible = true;
+          }
+        });
+      }, options);
+
+      if (this.$refs.timeline) {
+        this.observer.observe(this.$refs.timeline);
+      }
+    }
   }
 };
 </script>
@@ -124,6 +156,16 @@ export default {
   max-width: 380px;
   text-align: left;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 500ms ease, transform 500ms ease;
+  transition-delay: calc(var(--item-index) * 150ms);
+  will-change: opacity, transform;
+}
+
+.timeline-content.is-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .timeline-row {
@@ -258,7 +300,12 @@ export default {
 /* responsive tweaks */
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
-  .fade-in-section.is-visible { transition: none; transform: none; }
+  .fade-in-section.is-visible,
+  .timeline-content,
+  .timeline-content.is-visible { 
+    transition: none; 
+    transform: none; 
+  }
 }
 
 @media (max-width: 768px) {
