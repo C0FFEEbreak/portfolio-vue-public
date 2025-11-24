@@ -1,41 +1,50 @@
 <template>
   <section class="projects" id="projects" aria-label="Project portfolio">
-    <!-- fade-in -->
+    <!-- Title with circles wrapper -->
+    <div v-intersect class="title-with-circles">
+      <div class="title-circles">
+        <div class="circle-yellow"></div>
+        <div class="circle-blue"></div>
+      </div>
+      <h1 class="section-title">Projects</h1>
+    </div>
+    
+    <!-- HR line animation -->
+    <hr v-intersect />
+
+    <!-- Content fade-in -->
     <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
-    <h1 class="section-title">Projects</h1>
-    <hr />
+      <div class="projects-grid">
+        <div v-for="(project, index) in projects" :key="index" class="project-card">
+          <a :href="project.url" target="_blank" rel="noopener noreferrer">
+            <img :src="project.image" :alt="project.alt" class="card-image" />
+          </a>
 
-    <div class="projects-grid">
-      <div v-for="(project, index) in projects" :key="index" class="project-card">
-        <a :href="project.url" target="_blank" rel="noopener noreferrer">
-          <img :src="project.image" :alt="project.alt" class="card-image" />
-        </a>
+          <div class="card-content">
+            <div class="card-main-text">{{ project.title }}</div>
+            
+            <!-- Description -->
+            <p v-if="project.description" class="card-description">
+              {{ project.description }}
+            </p>
+          </div>
 
-        <div class="card-content">
-          <div class="card-main-text">{{ project.title }}</div>
-          
-          <!-- Description -->
-          <p v-if="project.description" class="card-description">
-            {{ project.description }}
-          </p>
-        </div>
-
-        <div class="card-footer">
-          <div class="footer-text">{{ project.footerText }}</div>
-          <div class="tech-icons">
-            <span
-              v-for="tech in project.tech"
-              :key="tech"
-              class="tech-icon"
-              :data-tech="tech"
-              :title="getTechLabel(tech)"
-            >
-              {{ tech.toUpperCase()[0] }}
-            </span>
+          <div class="card-footer">
+            <div class="footer-text">{{ project.footerText }}</div>
+            <div class="tech-icons">
+              <span
+                v-for="tech in project.tech"
+                :key="tech"
+                class="tech-icon"
+                :data-tech="tech"
+                :title="getTechLabel(tech)"
+              >
+                {{ tech.toUpperCase()[0] }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
 </template>

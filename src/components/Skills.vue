@@ -1,23 +1,32 @@
 <template>
   <section class="skills" id="skills">
-    <!-- fade-in -->
+    <!-- Title with circles wrapper -->
+    <div v-intersect class="title-with-circles">
+      <div class="title-circles">
+        <div class="circle-yellow"></div>
+        <div class="circle-blue"></div>
+      </div>
+      <h1 class="section-title">Skills</h1>
+    </div>
+    
+    <!-- HR line animation -->
+    <hr v-intersect />
+    
+    <!-- Content fade-in -->
     <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
-    <h1 class="section-title">Skills</h1>
-    <hr />
-
-    <div class="skills-grid">
-      <div class="skill-column" v-for="(skill, index) in skills" :key="index">
-        <div class="skill-header">
-          <div class="skill-icon">
-            <img :src="skill.icon" :alt="skill.title" />
+      <div class="skills-grid">
+        <div class="skill-column" v-for="(skill, index) in skills" :key="index">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <img :src="skill.icon" :alt="skill.title" />
+            </div>
+            <div class="skill-title">{{ skill.title }}</div>
           </div>
-          <div class="skill-title">{{ skill.title }}</div>
-        </div>
-        <div class="skill-list">
-          <span class="skill-item" v-for="(item, i) in skill.items" :key="i">{{ item }}</span>
+          <div class="skill-list">
+            <span class="skill-item" v-for="(item, i) in skill.items" :key="i">{{ item }}</span>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
 </template>
@@ -101,7 +110,6 @@ const skills = [
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-
 /* Fade-in helper (opacity + transform) */
 .fade-in-section {
   opacity: 0;
@@ -109,10 +117,12 @@ const skills = [
   transition: opacity 420ms ease, transform 420ms ease;
   will-change: opacity, transform;
 }
+
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
   .fade-in-section.is-visible {

@@ -5,9 +5,29 @@ body {
   background-attachment: fixed;
   background-color: #0f1419;
 }
+
 html {
-  scroll-behavior: smooth; /* smooth scrolling */
+  scroll-behavior: smooth;
 }
+
+/* Title wrapper with circles - includes animation */
+.title-with-circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* gap: 1.5rem; */
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 450ms ease-out, transform 450ms ease-out;
+}
+
+.title-with-circles.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section title styling */
 .section-title {
   color: #5F97AD;
   font-size: 2rem;
@@ -15,43 +35,94 @@ html {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 2px black; /* horizontal, vertical, blur, color */
-
-  /* Grid layouts */
+  margin-bottom: 0;
+  text-shadow: 2px 2px 2px black;
   grid-column: 1 / -1;
   display: block;
   position: relative;
 }
 
+/* Circle container */
+.title-circles {
+  position: relative;
+  width: 50px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* Individual circles */
+.circle-yellow {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #FFD77A;
+  border-radius: 50%;
+  top: 18px;
+  left: 12px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.circle-blue {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #7f704a;
+  border-radius: 50%;
+  opacity: 0.65;
+  top: 10px;
+  right: 4px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hover animation */
+.title-with-circles:hover .circle-yellow {
+  transform: translateY(-10px);
+}
+
+.title-with-circles:hover .circle-blue {
+  transform: translateY(10px);
+}
+
+/* HR line animation */
 hr {
   width: 50%;
   margin: 0 auto 48px auto;
   border: none;
   height: 1px;
   background-color: #9FC2D0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity 650ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 650ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+hr.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 /* Section Padding */
 .hero {
   margin-top: 20px;
 }
+
 .hero, .skills, .projects, .experiences, .education {
   padding: 4rem 4rem;
   padding-bottom: 100px;
 }
+
 .section-content {
-  margin-top: 1.5rem;  /* space after hr */
+  margin-top: 1.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;  /* consistent spacing between cards/items */
+  /* gap: 1.5rem; */
 }
 
 /* Color Scheme */
 div#app {
   background: none;
   max-width: 900px;
-  /* width: 100%; */
   margin: auto;
   padding: 1rem;
   overflow-x: hidden;
@@ -63,30 +134,39 @@ h1, h2, li, p {
   font-weight: 400;
   font-style: normal;
 }
+
 header {
   background: #182025;
 }
+
 .hero {
   background: #29353C;
 }
+
 .skills {
   background: #182025;
 }
+
 .skill-column {
   color: #C5C6BF;
 }
+
 .skill-item {
   background-color: #29353C;
 }
+
 .projects {
   background: #29353C;
 }
+
 .experiences {
   background: #182025;
 }
+
 .education {
   background: #29353C;
 }
+
 footer {
   background: #182025;
 }
@@ -96,13 +176,16 @@ footer {
   border-radius: 12px;
   border: 4px solid #B5BABA;
 }
+
 .card-image {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
+
 .experiences-image img {
   border-radius: 12px;
 }
+
 .experience-icon img {
   border-radius: 12px;
 }
@@ -114,16 +197,10 @@ footer {
   border: 4px solid #B5BABA;
 }
 
-/*  Hero Typing Effect  */
+/* Hero Typing Effect */
 .typed-cursor {
-  /* Blink speed */
-  /* animation: blink 1.2s infinite; */
   animation: none !important;
-
-  /* Cursor color */
   color: #FFF;
-
-  /* Cursor opacity for subtle blinking */
   opacity: 1;
 }
 
@@ -136,69 +213,173 @@ footer {
   }
 }
 
-
 #projects, #education {
   background-color: #29353c;
 }
+
 #experiences, #skills {
   background-color: #182025;
 }
+
 #projects, #education, #experiences, #skills {
   padding: 6rem 4rem;
 }
 
 /* Section drop-shadows */
 #projects, #education, #experiences, #skills, #footer {
-  box-shadow: 0 -18px 35px -25px rgba(0,0,0,0.6); /* 4th adjusts spread  */
+  box-shadow: 0 -18px 35px -25px rgba(0,0,0,0.6);
   position: relative;
   z-index: 0;
 }
+
+/* Fade-in sections */
 .fade-in-section {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1);
   will-change: opacity, transform;
 }
+
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 .fade-in-section .stagger-item {
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 420ms ease, transform 420ms ease;
 }
+
 .fade-in-section.is-visible .stagger-item {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
-  .fade-in-section .stagger-item {
+  .fade-in-section .stagger-item,
+  .title-with-circles,
+  .circle-yellow,
+  .circle-blue,
+  hr {
     transition: none !important;
     transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .title-with-circles {
+    gap: 0.08rem;
+  }
+  
+  .title-circles {
+    width: 40px;
+    height: 35px;
+  }
+  
+  .circle-yellow {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .circle-blue {
+    width: 14px;
+    height: 14px;
+    right: 6px;
+  }
+  
+  .title-with-circles:hover .circle-yellow {
+    transform: translateY(-8px);
+  }
+  
+  .title-with-circles:hover .circle-blue {
+    transform: translateY(8px);
   }
 }
 
 @media (max-width: 420px) {
   #projects, #education, #experiences, #skills {
-	  padding: 1rem;
+    padding: 1rem;
   }
+  
   hr {
-	  width: 95%;
+    width: 95%;
   }
+  
   div#app {
     padding: 1rem 0.2rem;
   }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .title-with-circles {
+    gap: 0.25rem;
+  }
+  
+  .title-circles {
+    width: 35px;
+    height: 30px;
+  }
+  
+  .circle-yellow {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .circle-blue {
+    width: 14px;
+    height: 14px;
+    right: 2px;
+  }
+  
+  .title-with-circles:hover .circle-yellow {
+    transform: translateY(-6px);
+  }
+  
+  .title-with-circles:hover .circle-blue {
+    transform: translateY(6px);
+  }
 }
+
 /* Touch devices only */
 @media (hover: none) and (pointer: coarse) {
   #projects, #education, #experiences, #skills {
     padding: 2rem 2rem;
   }
+  
   .hero {
     margin-top: 0;
   }
 }
 
+@media only screen and (min-width: 810px) and (max-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  .circle-yellow { top: 23px; left: 12px; }
+  .circle-blue   { top: 14px; right: 4px; }
+}
+/* Option A — Most reliable in 2025 (slightly loosened width + orientation) */
+@media only screen 
+and (min-width: 810px) 
+and (max-width: 1194px)   /* 11″ landscape max */
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+  .circle-yellow { top: 23px; left: 12px; }
+  .circle-blue   { top: 14px; right: 4px; }
+}
+@media only screen 
+and (min-width: 1024px) 
+and (max-width: 1366px)   /* 12.9″/13″ landscape */
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+  .circle-yellow { top: 23px; left: 12px; }
+  .circle-blue   { top: 14px; right: 4px; }
+}

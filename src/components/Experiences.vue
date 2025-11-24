@@ -1,10 +1,19 @@
 <template>
   <section class="experiences" id="experiences">
-    <!-- fade-in -->
-    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
+    <!-- Title with circles wrapper -->
+    <div v-intersect class="title-with-circles">
+      <div class="title-circles">
+        <div class="circle-yellow"></div>
+        <div class="circle-blue"></div>
+      </div>
       <h1 class="section-title">Experiences</h1>
-      <hr />
-
+    </div>
+    
+    <!-- HR line animation -->
+    <hr v-intersect />
+    
+    <!-- Content fade-in -->
+    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
       <div class="experiences-content">
         <!-- Left Column -->
         <div class="experience-square">
@@ -40,8 +49,6 @@
               :aria-labelledby="'accordion-header-' + index">
               <p>{{ experience.description }}</p>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -210,20 +217,20 @@ function toggleAccordion(index) {
   .accordion-header {
     font-size: 14px;
     text-align: left;
-
   }
 }
+
 @media (max-width: 420px) {
-	.experiences-accordion {
-		padding: 8px;
-		margin: 0;
-	}
-	.experience-square {
-		max-width: 250px;
-	}
-	.accordion-content p {
-		margin: 0;
-		padding: 0 4px 8px 0;
-	}
+  .experiences-accordion {
+    padding: 8px;
+    margin: 0;
+  }
+  .experience-square {
+    max-width: 250px;
+  }
+  .accordion-content p {
+    margin: 0;
+    padding: 0 4px 8px 0;
+  }
 }
 </style>

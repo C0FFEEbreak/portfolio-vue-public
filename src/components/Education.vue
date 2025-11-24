@@ -1,8 +1,17 @@
 <template>
-  <section class="education" id="education" aria-label="Education and coursework">
-    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
+  <section class="education" id="education">
+    <!-- Title with circles wrapper -->
+    <div v-intersect class="title-with-circles">
+      <div class="title-circles">
+        <div class="circle-yellow"></div>
+        <div class="circle-blue"></div>
+      </div>
       <h1 class="section-title">Education</h1>
-      <hr />
+    </div>
+    
+    <!-- HR line animation -->
+    <hr v-intersect />
+    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
 
       <div class="education-grid">
         <!-- Timeline column -->
