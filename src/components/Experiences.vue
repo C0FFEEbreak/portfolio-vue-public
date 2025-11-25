@@ -69,19 +69,20 @@ function toggleAccordion(index) {
 
 <style scoped>
 .experiences-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40% 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
 .experience-square {
   background-color: #3A4B55;
   color: #fff;
-  width: 40%;
   height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .experience-inner {
@@ -190,18 +191,29 @@ function toggleAccordion(index) {
   }
 }
 
+
 @media (max-width: 768px) {
   .experiences-content {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0;
+    grid-template-columns: 1fr;
   }
 
-  .experience-square,
+  .experience-square {
+    width: 100%;
+    max-width: 80%;
+    height: 120px;
+    margin-top: 0;
+  }
+
   .experiences-accordion {
     width: 100%;
+    margin: 0;
+    padding: 16px;
   }
 
   .experience-inner img {
@@ -209,13 +221,8 @@ function toggleAccordion(index) {
     padding: 6px;
   }
 
-  .experience-square {
-    max-width: 380px;
-    max-height: 100px;
-  }
-
   .accordion-header {
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
   }
 }
