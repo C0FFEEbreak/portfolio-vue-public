@@ -13,10 +13,10 @@
     <hr v-intersect />
     
     <!-- Content fade-in -->
-    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
+    <div v-intersect="{ duration: '300ms' }">
       <div class="experiences-content">
         <!-- Left Column -->
-        <div class="experience-square">
+        <div class="experience-square" v-intersect>
           <div class="experience-inner">
             <div class="experience-icon">
               <img src="@/assets/icons/icon-briefcase.svg" alt="Briefcase Icon" />
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Right Column -->
-        <div class="experiences-accordion">
+        <div class="experiences-accordion" v-intersect>
           <div v-for="(experience, index) in experiences" :key="index" class="accordion-item">
             <button class="accordion-header" :aria-expanded="activeIndex === index ? 'true' : 'false'"
               :aria-controls="'panel-' + index" @click="toggleAccordion(index)" :id="'accordion-header-' + index">
@@ -83,6 +83,14 @@ function toggleAccordion(index) {
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.experience-square.is-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .experience-inner {
@@ -119,6 +127,15 @@ function toggleAccordion(index) {
   flex: 1;
   box-sizing: border-box;
   margin: 12px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.experiences-accordion.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+    transition-delay: 150ms;
 }
 
 .accordion-item {
@@ -170,27 +187,6 @@ function toggleAccordion(index) {
   padding: 0 20px;
 }
 
-/* Fade-in */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 420ms ease, transform 420ms ease;
-  will-change: opacity, transform;
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in-section,
-  .fade-in-section.is-visible {
-    transition: none;
-    transform: none;
-  }
-}
-
 
 @media (max-width: 768px) {
   .experiences-content {
@@ -238,6 +234,17 @@ function toggleAccordion(index) {
   .accordion-content p {
     margin: 0;
     padding: 0 4px 8px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-square,
+  .experience-square.is-visible,
+  .experiences-accordion,
+  .experiences-accordion.is-visible {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
 </style>

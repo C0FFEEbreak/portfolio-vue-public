@@ -13,9 +13,9 @@
     <hr v-intersect />
     
     <!-- Content fade-in -->
-    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
+    <div v-intersect="{ duration: '300ms' }">
       <div class="skills-grid">
-        <div class="skill-column" v-for="(skill, index) in skills" :key="index">
+        <div class="skill-column" v-for="(skill, index) in skills" :key="index" v-intersect>
           <div class="skill-header">
             <div class="skill-icon">
               <img :src="skill.icon" :alt="skill.title" />
@@ -53,13 +53,24 @@ const skills = [
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 420ms ease, transform 420ms ease;
 }
 
 .skill-column:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
+
+.skill-column.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-column:nth-child(3n+1).is-visible { transition-delay: 0ms; }
+.skill-column:nth-child(3n+2).is-visible { transition-delay: 100ms; }
+.skill-column:nth-child(3n+3).is-visible { transition-delay: 200ms; }
 
 .skill-header {
   display: grid;
@@ -108,6 +119,10 @@ const skills = [
 
 @media (max-width: 1024px) {
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  /* 2-column layout stagger */
+  .skill-column:nth-child(2n+1).is-visible { transition-delay: 0ms; }
+  .skill-column:nth-child(2n+2).is-visible { transition-delay: 100ms; }
 }
 
 /* Fade-in helper (opacity + transform) */
@@ -124,8 +139,8 @@ const skills = [
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-section,
-  .fade-in-section.is-visible {
+  .skill-column,
+  .skill-column.is-visible {
     transition: none;
     transform: none;
   }
@@ -133,5 +148,8 @@ const skills = [
 
 @media (max-width: 768px) {
   .skills-grid { grid-template-columns: 1fr; }
+  
+  /* Single column - no stagger needed */
+  .skill-column.is-visible { transition-delay: 0ms; }
 }
 </style>

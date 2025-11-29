@@ -13,9 +13,9 @@
     <hr v-intersect />
 
     <!-- Content fade-in -->
-    <div v-intersect="{ duration: '300ms' }" class="fade-in-section">
+    <div v-intersect="{ duration: '300ms' }">
       <div class="projects-grid">
-        <div v-for="(project, index) in projects" :key="index" class="project-card">
+        <div v-for="(project, index) in projects" :key="index" class="project-card" v-intersect>
           <a :href="project.url" target="_blank" rel="noopener noreferrer">
             <img :src="project.image" :alt="project.alt" class="card-image" />
           </a>
@@ -170,18 +170,28 @@ export default {
 }
 
 .project-card {
-  display: flex;
-  flex-direction: column;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 420ms ease, transform 420ms ease;
   background: #C5C6BF;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
+
+.project-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation for cards in the same row */
+.project-card:nth-child(3n+1).is-visible { transition-delay: 0ms; }
+.project-card:nth-child(3n+2).is-visible { transition-delay: 100ms; }
+.project-card:nth-child(3n+3).is-visible { transition-delay: 200ms; }
 
 .card-image {
   width: 100%;
@@ -320,7 +330,9 @@ export default {
 @media (max-width: 900px) { 
   .projects-grid { 
     grid-template-columns: repeat(2, 1fr); 
-  } 
+  }
+  .project-card:nth-child(2n+1).is-visible { transition-delay: 0ms; }
+  .project-card:nth-child(2n+2).is-visible { transition-delay: 100ms; }
 }
 
 @media (max-width: 600px) { 
@@ -328,19 +340,17 @@ export default {
     grid-template-columns: 1fr; 
     gap: 68px; 
   }
-  
   .tech-icon {
     width: 24px;
     height: 24px;
     font-size: 0.65rem;
   }
-  
   .card-footer {
     padding: 0.6rem 0.8rem;
   }
-  
   .footer-text {
     font-size: 0.85rem;
   }
+  .project-card.is-visible { transition-delay: 0ms; }
 }
 </style>
