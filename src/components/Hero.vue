@@ -359,6 +359,8 @@ onUnmounted(() => {
   .hero {
     padding: 3rem 1.5rem;
     min-height: 340px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   
   .content-wrapper {
