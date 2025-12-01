@@ -272,6 +272,28 @@ export default {
   font-size: 1rem;
   color: #333;
   margin: 0;
+  
+  /* Initial state */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animate when card is visible */
+.project-card.is-visible .card-main-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger after the image animation */
+.project-card:nth-child(3n+1).is-visible .card-main-text { 
+  transition-delay: 500ms; /* 200ms card + 300ms for image to mostly appear */
+}
+.project-card:nth-child(3n+2).is-visible .card-main-text { 
+  transition-delay: 600ms; 
+}
+.project-card:nth-child(3n+3).is-visible .card-main-text { 
+  transition-delay: 700ms; 
 }
 
 /* Description text */
@@ -280,6 +302,28 @@ export default {
   color: #555;
   line-height: 1.4;
   margin: 0;
+  
+  /* Initial state */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animate when card is visible */
+.project-card.is-visible .card-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger after the title animation */
+.project-card:nth-child(3n+1).is-visible .card-description { 
+  transition-delay: 700ms; /* 200ms after title starts */
+}
+.project-card:nth-child(3n+2).is-visible .card-description { 
+  transition-delay: 800ms; 
+}
+.project-card:nth-child(3n+3).is-visible .card-description { 
+  transition-delay: 900ms; 
 }
 
 /* Card footer - project name + tech icons */
@@ -354,6 +398,12 @@ export default {
     transition: none;
     transform: none;
   }
+  .card-main-text,
+  .card-description {
+    transition: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) { 
@@ -361,8 +411,22 @@ export default {
     grid-template-columns: repeat(2, 1fr); 
   }
   .project-card:nth-child(2n+1).is-visible { transition-delay: 0ms; }
-  .project-card:nth-child(2n+2).is-visible { transition-delay: 100ms; }
+  .project-card:nth-child(2n+2).is-visible { transition-delay: 100ms; } 
+  .project-card:nth-child(2n+1).is-visible .card-main-text { 
+    transition-delay: 500ms; 
+  }
+  .project-card:nth-child(2n+2).is-visible .card-main-text { 
+    transition-delay: 600ms; 
+  }
+  
+  .project-card:nth-child(2n+1).is-visible .card-description { 
+    transition-delay: 700ms; 
+  }
+  .project-card:nth-child(2n+2).is-visible .card-description { 
+    transition-delay: 800ms; 
+  }
 }
+
 
 @media (max-width: 600px) { 
   .projects-grid { 
@@ -380,5 +444,11 @@ export default {
     font-size: 0.85rem;
   }
   .project-card.is-visible { transition-delay: 0ms; }
+  .project-card.is-visible .card-main-text { 
+    transition-delay: 500ms; 
+  }
+  .project-card.is-visible .card-description { 
+    transition-delay: 700ms; 
+  }
 }
 </style>
