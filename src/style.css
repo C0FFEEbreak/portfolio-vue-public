@@ -178,11 +178,6 @@ footer {
   border: 4px solid #B5BABA;
 }
 
-.card-image {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
 .experiences-image img {
   border-radius: 12px;
 }

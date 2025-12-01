@@ -195,14 +195,67 @@ export default {
 .project-card:nth-child(3n+3).is-visible { transition-delay: 200ms; }
 
 .card-image {
-  width: 100%;
+  width: 90%;
   height: auto;
+  border-radius: 50%;
+	border: 6px solid #e2dddd; 
+  box-shadow: 0 0 20px 4px rgba(34, 34, 34, 0.1);
   display: block;
-  transition: transform 0.3s ease;
+  margin: auto;
+  margin-top: 8px;
+  
+  /* Initial state - hidden and scaled down */
+  opacity: 0;
+  transform: scale(0.3);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.6s ease;
 }
 
+/* When card becomes visible, animate the image */
+.project-card.is-visible .card-image {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger the image animations after the card */
+.project-card:nth-child(3n+1).is-visible .card-image { 
+  transition-delay: 200ms; 
+}
+.project-card:nth-child(3n+2).is-visible .card-image { 
+  transition-delay: 300ms; 
+}
+.project-card:nth-child(3n+3).is-visible .card-image { 
+  transition-delay: 400ms; 
+}
+
+/* Hover effect */
 .project-card a:hover .card-image { 
   transform: scale(1.05); 
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card-image {
+    transition: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive stagger adjustments */
+@media (max-width: 900px) { 
+  .project-card:nth-child(2n+1).is-visible .card-image { 
+    transition-delay: 200ms; 
+  }
+  .project-card:nth-child(2n+2).is-visible .card-image { 
+    transition-delay: 300ms; 
+  }
+}
+
+@media (max-width: 600px) { 
+  .project-card.is-visible .card-image { 
+    transition-delay: 200ms; 
+  }
 }
 
 /* Card content wrapper */
