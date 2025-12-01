@@ -172,7 +172,7 @@ export default {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 420ms ease, transform 420ms ease;
-  background: #C5C6BF;
+  background: #C9CAC4;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   display: flex;
