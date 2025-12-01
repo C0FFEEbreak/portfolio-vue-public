@@ -37,9 +37,8 @@
                 :key="tech"
                 class="tech-icon"
                 :data-tech="tech"
-                :title="getTechLabel(tech)"
               >
-                {{ tech.toUpperCase()[0] }}
+                {{ tech.toUpperCase() }}
               </span>
             </div>
           </div>
@@ -72,7 +71,7 @@ export default {
           footerText: "Paw Spa",
           alt: "Screenshot of animal website",
           description: "Responsive multi-page website with service showcase and contact information.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Interactive Quiz",
@@ -81,7 +80,7 @@ export default {
           footerText: "Multiple Choice",
           alt: "Screenshot of nature activity",
           description: "Multi-question quiz with instant feedback and score tracking.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Restaurant Website",
@@ -90,7 +89,7 @@ export default {
           footerText: "Yume Poke",
           alt: "Screenshot of restaurant website",
           description: "Mobile-optimized restaurant site with menu display and location info.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Hotspot Activity",
@@ -99,7 +98,7 @@ export default {
           footerText: "Click to Reveal",
           alt: "Screenshot of sports activity",
           description: "Interactive image with clickable hotspots revealing hidden content.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Image Reveal Game",
@@ -108,7 +107,7 @@ export default {
           footerText: "Click to Reveal",
           alt: "Screenshot of travel activity",
           description: "Click-to-reveal activity with interactive image elements.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Task Checklist",
@@ -117,7 +116,7 @@ export default {
           footerText: "Checklist",
           alt: "Screenshot of checklist",
           description: "Dynamic checklist with add/remove functionality using local storage.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Calculator Tool",
@@ -126,7 +125,7 @@ export default {
           footerText: "Calculator",
           alt: "Screenshot of calculator",
           description: "Functional calculator with keyboard input support and basic operations.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Content Reveal",
@@ -135,7 +134,7 @@ export default {
           footerText: "Click to Reveal",
           alt: "Screenshot of sports activity",
           description: "Interactive content reveal with smooth CSS animations.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         },
         {
           title: "Stopwatch Timer",
@@ -144,7 +143,7 @@ export default {
           footerText: "Stopwatch",
           alt: "Screenshot of JS stopwatch",
           description: "Precise stopwatch with start, stop, and reset functionality.",
-          tech: ['js', 'html', 'css']
+          tech: ['html', 'css', 'js']
         }
       ]
     };
@@ -176,6 +175,8 @@ export default {
   background: #C5C6BF;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -231,10 +232,11 @@ export default {
 /* Card footer - project name + tech icons */
 .card-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.6rem;
   padding: 0.8rem 1rem;
   border-top: 1px solid #b0b0b0;
+  margin-top: auto;
 }
 
 .footer-text { 
@@ -250,16 +252,14 @@ export default {
 }
 
 .tech-icon {
-  width: 28px;
-  height: 28px;
+  padding: 0.35rem 0.6rem;
   border-radius: 6px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 0.7rem;
   font-weight: bold;
   color: #fff;
-  cursor: help;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
@@ -280,30 +280,6 @@ export default {
 .tech-icon[data-tech="js"] {
   background-color: #9DA3A4;
   color: #182025;
-}
-
-/* Tooltip on hover */
-.tech-icon::after {
-  content: attr(title);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  margin-bottom: 4px;
-  z-index: 10;
-}
-
-.tech-icon:hover::after {
-  opacity: 1;
 }
 
 /* Fade-in */
@@ -341,8 +317,7 @@ export default {
     gap: 68px; 
   }
   .tech-icon {
-    width: 24px;
-    height: 24px;
+    padding: 0.3rem 0.5rem;
     font-size: 0.65rem;
   }
   .card-footer {
