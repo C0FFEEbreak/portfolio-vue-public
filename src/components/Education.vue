@@ -112,6 +112,12 @@ export default {
         entries.forEach(entry => {
           if (entry.isIntersecting && !this.timelineVisible) {
             this.timelineVisible = true;
+            // Trigger line animation after dots are visible
+            setTimeout(() => {
+              if (this.$refs.timeline) {
+                this.$refs.timeline.classList.add('line-visible');
+              }
+            }, 500);
           }
         });
       }, options);
@@ -147,7 +153,28 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: center; /* center the column itself horizontally */
+  align-items: flex-start;
+  position: relative;
+  padding-left: 0;
+}
+
+/* single vertical line connecting all dots */
+.education-timeline::before {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  background: #76A8BC;
+  opacity: 0.4;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  height: 0;
+  transition: height 800ms ease 900ms;
+  z-index: 1;
+}
+
+.education-timeline.line-visible::before {
+  height: calc(100% - 90px);
 }
 
 /* timeline items */
@@ -161,6 +188,8 @@ export default {
   transition: opacity 500ms ease, transform 500ms ease;
   transition-delay: calc(var(--item-index) * 150ms);
   will-change: opacity, transform;
+  position: relative;
+  padding-left: 0;
 }
 
 .timeline-content.is-visible {
@@ -170,7 +199,7 @@ export default {
 
 .timeline-row {
   display: flex;
-  align-items: flex-start; /* <-- fix: top align by default */
+  align-items: flex-start;
   gap: 0.6rem;
 }
 
@@ -181,8 +210,12 @@ export default {
   background: #76A8BC;
   border-radius: 50%;
   flex-shrink: 0;
-  margin-top: 4px; /* small visual nudge to sit next to first text line */
+  margin-top: 4px;
+  position: relative;
+  z-index: 2;
 }
+
+/* no connecting lines needed on individual dots anymore */
 
 /* school title */
 .timeline-row .school {
@@ -267,8 +300,8 @@ export default {
   aspect-ratio: 1;
   border-radius: 50%;
   border-style: solid;
-  border-color: #fff;
-  border-width: 1px;
+  border-color: #E2DDD0;
+  border-width: 6px;
   background-color: #C5C6BF;
   display: flex;
   align-items: center;
@@ -308,16 +341,22 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 794px) {
   .education-grid {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
   }
   .education-timeline {
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
   }
+  
+  /* hide line on mobile */
+  .education-timeline::before {
+    display: none;
+  }
+  
   .timeline-content {
     max-width: 460px;
     padding-inline: 1rem;
