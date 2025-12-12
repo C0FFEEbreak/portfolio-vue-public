@@ -135,7 +135,7 @@ function toggleAccordion(index) {
 .experiences-accordion.is-visible {
   opacity: 1;
   transform: translateX(0);
-    transition-delay: 150ms;
+  transition-delay: 150ms;
 }
 
 .accordion-item {
@@ -153,20 +153,18 @@ function toggleAccordion(index) {
   font-size: 1.1rem;
   cursor: pointer;
   color: #fff;
-}
-
-.accordion-header {
-  cursor: pointer;
   font-weight: 500;
   padding: 0.6rem 1rem;
   border-radius: 8px;
-  color: #fff;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.accordion-header:hover {
-  color: #FFD77A;
-  background: rgba(255, 255, 255, 0.08);
+/* hover on devices with hover capability (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .accordion-header:hover {
+    color: #FFD77A;
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .accordion-content {
