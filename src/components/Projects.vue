@@ -137,13 +137,13 @@ export default {
           tech: ['html', 'css', 'js']
         },
         {
-          title: "Stopwatch Timer",
+          title: "Theme & Stopwatch",
           image: img8,
-          url: "https://codepen.io/coffeebreaks/pen/oNmLZoq",
-          footerText: "Stopwatch",
+          url: "https://codepen.io/coffeebreaks/pen/QwNoXxo",
+          footerText: "React Stopwatch",
           alt: "Screenshot of JS stopwatch",
-          description: "Precise stopwatch with start, stop, and reset functionality.",
-          tech: ['html', 'css', 'js']
+          description: "Precise stopwatch with start, pause, and reset functionality, and changeable color themes.",
+          tech: ['html', 'css', 'react']
         }
       ]
     };
@@ -153,7 +153,8 @@ export default {
       const labels = {
         html: 'HTML5',
         css: 'CSS3',
-        js: 'JavaScript'
+        js: 'JavaScript',
+        react: 'React'
       };
       return labels[tech] || tech;
     }
@@ -376,6 +377,11 @@ export default {
 
 .tech-icon[data-tech="js"] {
   background-color: #9DA3A4;
+  color: #182025;
+}
+
+.tech-icon[data-tech="react"] {
+  background-color: #948392;
   color: #182025;
 }
 
