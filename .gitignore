@@ -14,3 +14,11 @@ yarn-error.log*
 
 # Editor settings (optional)
 .vscode/
+.DS_Store
+src/.DS_Store
+src/.DS_Store
+/src/assets
+/src
+.DS_Store
+/src
+/src/assets
