@@ -49,15 +49,12 @@
 </template>
 
 <script>
-import img1 from "@/assets/01.jpg";
-import img2 from "@/assets/02.jpg";
-import img3 from "@/assets/03.jpg";
+import img10 from "@/assets/10.jpg";
+import img11 from "@/assets/11.jpg";
 import img4 from "@/assets/04.jpg";
 import img5 from "@/assets/05.jpg";
-import img6 from "@/assets/06.jpg";
-import img7 from "@/assets/07.jpg";
-import img8 from "@/assets/08.jpg";
-import img9 from "@/assets/09.jpg";
+import img1 from "@/assets/01.jpg";
+import img12 from "@/assets/12.jpg";
 
 export default {
   name: "Projects",
@@ -65,31 +62,22 @@ export default {
     return {
       projects: [
         {
-          title: "Business Website",
-          image: img1,
-          url: "https://codepen.io/coffeebreaks/pen/ZEPbXgJ",
-          footerText: "Paw Spa",
-          alt: "Screenshot of animal website",
-          description: "Responsive multi-page website with service showcase and contact information.",
-          tech: ['html', 'css', 'js']
-        },
-        {
-          title: "Interactive Quiz",
-          image: img2,
-          url: "https://codepen.io/coffeebreaks/pen/RwvvpBM",
+          title: "Multiple Choice Quiz",
+          image: img10,
+          url: "https://c0ffeebreak.github.io/react-quiz/",
           footerText: "Multiple Choice",
-          alt: "Screenshot of nature activity",
-          description: "Multi-question quiz with instant feedback and score tracking.",
-          tech: ['html', 'css', 'js']
+          alt: "Screenshot of multiple choice quiz",
+          description: "A fully responsive multiple choice quiz application with accessiblity.",
+          tech: ['html', 'css', 'react']
         },
         {
-          title: "Restaurant Website",
-          image: img3,
-          url: "https://codepen.io/coffeebreaks/pen/wvOBKNx",
-          footerText: "Yume Poke",
-          alt: "Screenshot of restaurant website",
-          description: "Mobile-optimized restaurant site with menu display and location info.",
-          tech: ['html', 'css', 'js']
+          title: "Travel Planner",
+          image: img11,
+          url: "https://c0ffeebreak.github.io/planner-travel/",
+          footerText: "Planner",
+          alt: "Screenshot of travel planner todo checklist",
+          description: "The app includes dynamic lists, task scoring and progress totals for user travel planning.",
+          tech: ['html', 'css', 'react']
         },
         {
           title: "Hotspot Activity",
@@ -101,48 +89,30 @@ export default {
           tech: ['html', 'css', 'js']
         },
         {
-          title: "Image Reveal Game",
+          title: "Content Reveal Activity",
           image: img5,
           url: "https://codepen.io/coffeebreaks/pen/gOqdMMK",
           footerText: "Click to Reveal",
           alt: "Screenshot of travel activity",
-          description: "Click-to-reveal activity with interactive image elements.",
+          description: "Click-to-reveal activity with interactive content elements.",
           tech: ['html', 'css', 'js']
         },
         {
-          title: "Task Checklist",
-          image: img6,
-          url: "https://codepen.io/coffeebreaks/pen/QWYEjeR",
-          footerText: "Checklist",
-          alt: "Screenshot of checklist",
-          description: "Dynamic checklist with add/remove functionality using local storage.",
-          tech: ['html', 'css', 'js']
+          title: "Business Website",
+          image: img1,
+          url: "https://c0ffeebreak.github.io/react-paw-spa/",
+          footerText: "Paw Spa",
+          alt: "Screenshot of animal website",
+          description: "A responsive website with service showcase and contact information.",
+          tech: ['html', 'css', 'react']
         },
         {
-          title: "Calculator Tool",
-          image: img7,
-          url: "https://codepen.io/coffeebreaks/pen/gOqMVmd",
-          footerText: "Calculator",
-          alt: "Screenshot of calculator",
-          description: "Functional calculator with keyboard input support and basic operations.",
-          tech: ['html', 'css', 'js']
-        },
-        {
-          title: "Content Reveal",
-          image: img9,
-          url: "https://codepen.io/coffeebreaks/pen/bGZejrP",
-          footerText: "Click to Reveal",
-          alt: "Screenshot of sports activity",
-          description: "Interactive content reveal with smooth CSS animations.",
-          tech: ['html', 'css', 'js']
-        },
-        {
-          title: "Theme & Stopwatch",
-          image: img8,
-          url: "https://codepen.io/coffeebreaks/pen/QwNoXxo",
-          footerText: "React Stopwatch",
-          alt: "Screenshot of JS stopwatch",
-          description: "Precise stopwatch with start, pause, and reset functionality, and changeable color themes.",
+          title: "Todo Checklist",
+          image: img12,
+          url: "https://c0ffeebreak.github.io/react-checklist/",
+          footerText: "Checklist & Fetch",
+          alt: "Screenshot of todo checklist",
+          description: "Interactive todo app with progress tracking and data fetching display.",
           tech: ['html', 'css', 'react']
         }
       ]
