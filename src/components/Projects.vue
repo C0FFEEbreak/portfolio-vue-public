@@ -82,7 +82,7 @@ export default {
         {
           title: "Hotspot Activity",
           image: img4,
-          url: "https://codepen.io/coffeebreaks/pen/NWojJwP",
+          url: "https://c0ffeebreak.github.io/mc-soccer/",
           footerText: "Click to Reveal",
           alt: "Screenshot of sports activity",
           description: "Interactive image with clickable hotspots revealing hidden content.",
@@ -91,7 +91,7 @@ export default {
         {
           title: "Content Reveal Activity",
           image: img5,
-          url: "https://codepen.io/coffeebreaks/pen/gOqdMMK",
+          url: "https://c0ffeebreak.github.io/reveal-travel/",
           footerText: "Click to Reveal",
           alt: "Screenshot of travel activity",
           description: "Click-to-reveal activity with interactive content elements.",
