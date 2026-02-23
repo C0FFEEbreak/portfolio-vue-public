@@ -4,22 +4,22 @@
     <div class="geometric-bg" aria-hidden="true">
       <!-- Large Yellow Circle - Primary -->
       <div class="circle circle-large"></div>
-      
+
       <!-- Medium Yellow Circle -->
       <div class="circle circle-medium"></div>
-      
+
       <!-- Small Yellow Circle -->
       <div class="circle circle-small"></div>
-      
+
       <!-- Half Circle - Left -->
       <div class="half-circle"></div>
-      
+
       <!-- Ring/Outline Circle -->
       <div class="ring-circle"></div>
-      
+
       <!-- Dot Pattern Overlay -->
       <div class="dot-grid"></div>
-      
+
       <!-- Large Initial Letter as Graphic Element -->
       <div class="letter-graphic">S</div>
     </div>
@@ -28,9 +28,7 @@
       <div class="content-wrapper">
         <h1 class="name">{{ name }}</h1>
 
-        <p class="title">
-          I'm a <span ref="typed"></span>
-        </p>
+        <p class="title">I'm a <span ref="typed"></span></p>
 
         <p class="tagline">{{ tagline }}</p>
       </div>
@@ -43,7 +41,8 @@ import { onMounted, onUnmounted, ref } from "vue";
 import Typed from "typed.js";
 
 const name = "Stacey Trent Donica";
-const tagline = "Creating modern web experiences and interactive eLearning solutions for several years.";
+const tagline =
+  "20+ years building interactive eLearning solutions and enterprise learning technology with modern web experiences.";
 
 const typed = ref(null);
 let typedInstance = null;
@@ -66,7 +65,7 @@ onMounted(() => {
       "Front-End Developer",
       "Courseware Developer",
       "Graphic Designer",
-      "Media Creator"
+      "Media Creator",
     ],
     typeSpeed: 50,
     backSpeed: 40,
@@ -113,7 +112,7 @@ onUnmounted(() => {
 .name {
   font-size: 3rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0 0 1rem 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -136,7 +135,7 @@ onUnmounted(() => {
 
 .tagline {
   font-size: 1.1rem;
-  color: #E5E7EB;
+  color: #e5e7eb;
   line-height: 1.6;
   margin: 0;
   max-width: 500px;
@@ -160,7 +159,7 @@ onUnmounted(() => {
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  background: #374C53;
+  background: #374c53;
   border-radius: 50%;
   opacity: 0.95;
   z-index: 2;
@@ -226,11 +225,7 @@ onUnmounted(() => {
   right: 16%;
   top: 50%;
   transform: translateY(-50%);
-  background-image: radial-gradient(
-    circle,
-    #2d2d2d 2.5px,
-    transparent 2.5px
-  );
+  background-image: radial-gradient(circle, #2d2d2d 2.5px, transparent 2.5px);
   background-size: 18px 18px;
   opacity: 0.8;
   z-index: 4;
@@ -257,7 +252,8 @@ onUnmounted(() => {
 /* ========== ANIMATIONS ========== */
 
 @keyframes floatCircle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-50%) translateX(0);
   }
   50% {
@@ -266,7 +262,8 @@ onUnmounted(() => {
 }
 
 @keyframes floatSmall {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) scale(1);
   }
   50% {
@@ -275,7 +272,8 @@ onUnmounted(() => {
 }
 
 @keyframes pulseDots {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.8;
   }
   50% {
@@ -321,35 +319,35 @@ onUnmounted(() => {
     padding: 3.5rem 1.5rem;
     min-height: 360px;
   }
-  
+
   .letter-graphic {
     font-size: 16rem;
     right: -6%;
   }
-  
+
   .circle-large {
     width: 340px;
     height: 340px;
   }
-  
+
   .circle-medium {
     width: 130px;
     height: 130px;
   }
-  
+
   .dot-grid {
     width: 240px;
     height: 200px;
   }
-  
+
   .name {
     font-size: 2.5rem;
   }
-  
+
   .title {
     font-size: 1.5rem;
   }
-  
+
   .content-wrapper {
     max-width: 480px;
   }
@@ -362,50 +360,50 @@ onUnmounted(() => {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  
+
   .content-wrapper {
     max-width: 100%;
   }
-  
+
   /* Simplify geometric elements on mobile */
   .letter-graphic {
     font-size: 12rem;
     right: -12%;
     opacity: 0.7;
   }
-  
+
   .circle-large {
     width: 260px;
     height: 260px;
     right: -8%;
   }
-  
+
   .circle-medium {
     width: 90px;
     height: 90px;
     right: 2%;
     top: 6%;
   }
-  
+
   .circle-small,
   .ring-circle {
     display: none;
   }
-  
+
   .dot-grid {
     width: 160px;
     height: 140px;
     right: 8%;
   }
-  
+
   .name {
     font-size: 2rem;
   }
-  
+
   .title {
     font-size: 1.3rem;
   }
-  
+
   .tagline {
     font-size: 1rem;
   }
@@ -416,28 +414,28 @@ onUnmounted(() => {
     padding: 2.5rem 1.25rem;
     min-height: 320px;
   }
-  
+
   .letter-graphic {
     font-size: 9rem;
     right: -18%;
   }
-  
+
   .circle-large {
     width: 190px;
     height: 190px;
     right: -12%;
   }
-  
+
   .half-circle {
     width: 130px;
     height: 130px;
     left: -65px;
   }
-  
+
   .name {
     font-size: 1.75rem;
   }
-  
+
   .tagline {
     font-size: 0.95rem;
   }
